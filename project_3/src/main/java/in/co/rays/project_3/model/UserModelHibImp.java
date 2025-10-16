@@ -25,7 +25,7 @@ import in.co.rays.project_3.util.HibDataSource;
 /**
  * Hibernate implements of User model
  * 
- * @author Amit kirar
+ * @author Akbar Mansuri
  *
  */
 public class UserModelHibImp implements UserModelInt {

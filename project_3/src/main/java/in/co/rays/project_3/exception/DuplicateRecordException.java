@@ -2,7 +2,7 @@ package in.co.rays.project_3.exception;
 
 
 /**
- * @author Amit kirar
+ * @author Akbar Mansuri
  */
 public class DuplicateRecordException extends Exception{
 

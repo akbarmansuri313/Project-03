@@ -22,7 +22,7 @@ import in.co.rays.project_3.util.ServletUtility;
 /**
  * get marksheet functionality ctl.to perform get marksheet opeation
  * 
- * @author Amit kirar
+ * @author Akbar Mansuri
  *
  */
 @WebServlet(name = "GetMarksheetCtl", urlPatterns = { "/ctl/GetMarksheetCtl" })

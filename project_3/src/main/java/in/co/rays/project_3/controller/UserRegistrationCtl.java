@@ -25,7 +25,7 @@ import in.co.rays.project_3.util.ServletUtility;
 /**
  * User registration functionality Controller. Performs operation for User
  * 
- * @author Amit kirar
+ * @author Akbar Mansuri
  *
  */
 @WebServlet(urlPatterns = { "/UserRegistrationCtl" })
@@ -48,7 +48,7 @@ public class UserRegistrationCtl extends BaseCtl {
 		if (DataValidator.isNull(request.getParameter("lastName"))) {
 			request.setAttribute("lastName", PropertyReader.getValue("error.require", "last Name"));
 			pass = false;
-		} else if (!DataValidator.isName(request.getParameter("firstName"))) {
+		} else if (!DataValidator.isName(request.getParameter("lastName"))) {
 			request.setAttribute("lastName", "Last name contain Alphabets only");
 			pass = false;
 
@@ -131,6 +131,8 @@ public class UserRegistrationCtl extends BaseCtl {
 		dto.setMobileNo(DataUtility.getString(request.getParameter("mobileNo")));
 
 		dto.setDob(DataUtility.getDate(request.getParameter("dob")));
+		
+		populateBean(dto, request);
 
 		return dto;
 	}

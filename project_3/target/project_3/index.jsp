@@ -10,7 +10,7 @@
 }
 
 body {
-	background-image: url('img/sandeepimg.jpg');
+	background-image: url('img/amit.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 }

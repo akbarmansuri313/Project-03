@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 /**
  * ModelFactory decides which model implementation run
  * 
- * @author Amit kirar
+ * @author Akbar Mansuri
  * 
  * 
  *
@@ -42,7 +42,6 @@ public final class ModelFactory {
 		}
 		return productModel;
 	}
-
 	public MarksheetModelInt getMarksheetModel() {
 		MarksheetModelInt marksheetModel = (MarksheetModelInt) modelCache.get("marksheetModel");
 		if (marksheetModel == null) {

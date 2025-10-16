@@ -22,7 +22,7 @@ import in.co.rays.project_3.util.ServletUtility;
 /**
  * college functionality ctl. To perform add,delete ,update operation
  * 
- * @author Amit kirar
+ * @author Akbar Mansuri
  * 
  */
 
