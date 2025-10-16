@@ -27,7 +27,7 @@ import in.co.rays.project_3.util.ServletUtility;
 /**
  * user functionality controller.to perform add,delete and update operation
  * 
- * @author Amit kirar
+ * @author Akbar Mansuri
  *
  */
 @WebServlet(urlPatterns = { "/ctl/UserCtl" })
@@ -77,7 +77,7 @@ public class UserCtl extends BaseCtl {
 		if (DataValidator.isNull(request.getParameter("lastName"))) {
 			request.setAttribute("lastName", PropertyReader.getValue("error.require", "last Name"));
 			pass = false;
-		} else if (!DataValidator.isName(request.getParameter("firstName"))) {
+		} else if (!DataValidator.isName(request.getParameter("lastName"))) {
 			request.setAttribute("lastName", "please enter correct Name");
 			pass = false;
 
@@ -137,10 +137,7 @@ public class UserCtl extends BaseCtl {
 			request.setAttribute("confirmPassword", "Confirm  Password  should  be matched.");
 			pass = false;
 		}
-		System.out.println(request.getParameter("dob"));
-		System.out.println("validate end " + pass + "................" + request.getParameter("id"));
-		System.out.println(request.getParameter("password"));
-		System.out.println(request.getParameter("confirmPassword"));
+
 		return pass;
 
 	}
@@ -149,33 +146,21 @@ public class UserCtl extends BaseCtl {
 
 		UserDTO dto = new UserDTO();
 
-		System.out.println(request.getParameter("dob"));
-		System.out.println("Populate end " + "................" + request.getParameter("id"));
-		System.out.println("-------------------------------------------" + request.getParameter("password"));
-		System.out.println(request.getParameter("confirmPassword"));
-
 		dto.setId(DataUtility.getLong(request.getParameter("id")));
-
 		dto.setRoleId(DataUtility.getLong(request.getParameter("role")));
 		dto.setDob(DataUtility.getDate(request.getParameter("dob")));
 		dto.setFirstName(DataUtility.getString(request.getParameter("firstName")));
-
 		dto.setLastName(DataUtility.getString(request.getParameter("lastName")));
-
 		dto.setLogin(DataUtility.getString(request.getParameter("emailId")));
-
 		dto.setPassword(DataUtility.getString(request.getParameter("password")));
-
 		dto.setConfirmPassword(DataUtility.getString(request.getParameter("confirmPassword")));
-
 		dto.setGender(DataUtility.getString(request.getParameter("gender")));
 		dto.setMobileNo(DataUtility.getString(request.getParameter("mobileNo")));
-
 		populateBean(dto, request);
 
-		System.out.println(request.getParameter("dob") + "......." + dto.getDob());
 		log.debug("UserRegistrationCtl Method populatedto Ended");
 
+		populateBean(dto, request);
 		return dto;
 
 	}
@@ -220,8 +205,6 @@ public class UserCtl extends BaseCtl {
 		if (OP_SAVE.equalsIgnoreCase(op) || OP_UPDATE.equalsIgnoreCase(op)) {
 
 			UserDTO dto = (UserDTO) populateDTO(request);
-
-			System.out.println(" in do post method jkjjkjk++++++++" + dto.getId());
 
 			try {
 				if (id > 0) {

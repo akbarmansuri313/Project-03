@@ -1,7 +1,7 @@
 package in.co.rays.project_3.dto;
 /**
  * Role JavaDto encapsulates role attributes
- * @author Amit kirar
+ * @author Akbar Mansuri
  *
  */
 

@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 /**
  * user JavaDto encapsulates user attributes
- * @author Amit kirar
+ * @author Akbar Mansuri
  *
  */
 
@@ -129,9 +129,7 @@ public class UserDTO extends BaseDTO {
 	public void setLoginIP(String loginIP) {
 		this.loginIP = loginIP;
 	}
-
 	
-
 	public static String getActive() {
 		return ACTIVE;
 	}

@@ -6,13 +6,14 @@ import java.sql.Timestamp;
 /**
  * Parent class of all Dto in application. It contains generic attributes.
  * 
- * @author Amit kirar
+ * @author Akbar Mansuri
  *
  */
 
 public abstract class BaseDTO implements Serializable, Comparable<BaseDTO>, DropdownList {
 
 	/**
+	 * @author Akbar Mansuri
 		 * 
 		 */
 	private static final long serialVersionUID = 1L;

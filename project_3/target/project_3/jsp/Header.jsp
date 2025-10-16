@@ -27,8 +27,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-.aj {
-	background-image: linear-gradient(to bottom right, grey, black);
+.img {
+	background-image: linear-gradient(to bottom right, black, blue);
 }
 </style>
 </head>
@@ -48,7 +48,7 @@
 		}
 	%>
 	<div class="header">
-		<nav class="navbar navbar-expand-lg fixed-top aj"> <a
+		<nav class="navbar navbar-expand-lg fixed-top img"> <a
 			class="navbar-brand" href="<%=ORSView.WELCOME_CTL%>"><img
 			src="<%=ORSView.APP_CONTEXT%>/img/custom.png" width="190px"
 			height="50px"></a>
