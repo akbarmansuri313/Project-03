@@ -32,10 +32,6 @@ public class UserModelHibImp implements UserModelInt {
 
 	public long add(UserDTO dto) throws ApplicationException, DuplicateRecordException {
 
-		System.out.println("in addddddddddddd");
-		// TODO Auto-generated method stub
-		/* log.debug("usermodel hib start"); */
-
 		UserDTO existDto = null;
 		existDto = findByLogin(dto.getLogin());
 		if (existDto != null) {
@@ -47,15 +43,11 @@ public class UserModelHibImp implements UserModelInt {
 
 			int pk = 0;
 			tx = session.beginTransaction();
-
-			System.out.println("trac1");
 			session.save(dto);
-			System.out.println("trac2");
 			tx.commit();
-			System.out.println("trac3");
+
 		} catch (HibernateException e) {
 			e.printStackTrace();
-			// TODO: handle exception
 			if (tx != null) {
 				tx.rollback();
 
@@ -95,7 +87,7 @@ public class UserModelHibImp implements UserModelInt {
 		UserDTO existDto = findByLogin(dto.getLogin());
 		// Check if updated LoginId already exist
 		if (existDto != null && existDto.getId() != dto.getId()) {
-			 throw new DuplicateRecordException("LoginId is already exist");
+			throw new DuplicateRecordException("LoginId is already exist");
 		}
 
 		try {
@@ -188,10 +180,7 @@ public class UserModelHibImp implements UserModelInt {
 	}
 
 	public List search(UserDTO dto, int pageNo, int pageSize) throws ApplicationException {
-		// TODO Auto-generated method stub
 
-		System.out.println(
-				"hellllo" + pageNo + "....." + pageSize + "........" + dto.getId() + "......" + dto.getRoleId());
 		Session session = null;
 		ArrayList<UserDTO> list = null;
 		try {
@@ -230,16 +219,20 @@ public class UserModelHibImp implements UserModelInt {
 					criteria.add(Restrictions.eq("unSuccessfulLogin", dto.getUnSuccessfullLogin()));
 				}
 			}
-			// if pageSize is greater than 0
+
 			if (pageSize > 0) {
 				pageNo = (pageNo - 1) * pageSize;
 				criteria.setFirstResult(pageNo);
 				criteria.setMaxResults(pageSize);
 			}
 			list = (ArrayList<UserDTO>) criteria.list();
+
 		} catch (HibernateException e) {
+
 			throw new ApplicationException("Exception in user search");
+
 		} finally {
+
 			session.close();
 		}
 
@@ -247,17 +240,25 @@ public class UserModelHibImp implements UserModelInt {
 	}
 
 	public UserDTO authenticate(String login, String password) throws ApplicationException {
-		// TODO Auto-generated method stub
-		System.out.println(login + "kkkkk" + password);
+
 		Session session = null;
+		
 		UserDTO dto = null;
+		
 		session = HibDataSource.getSession();
+
 		Query q = session.createQuery("from UserDTO where login=? and password=?");
+
 		q.setString(0, login);
+
 		q.setString(1, password);
+
 		List list = q.list();
+
 		if (list.size() > 0) {
+
 			dto = (UserDTO) list.get(0);
+
 		} else {
 			dto = null;
 
@@ -272,13 +273,13 @@ public class UserModelHibImp implements UserModelInt {
 
 	public boolean changePassword(long id, String newPassword, String oldPassword)
 			throws ApplicationException, RecordNotFoundException {
-		// TODO Auto-generated method stub
 		boolean flag = false;
 		UserDTO dtoExist = null;
 
 		dtoExist = findByPK(id);
-		System.out.println("in method password" + dtoExist.getPassword() + "jjjjjjj" + oldPassword);
+
 		if (dtoExist != null && dtoExist.getPassword().equals(oldPassword)) {
+
 			dtoExist.setPassword(newPassword);
 			try {
 				update(dtoExist);
@@ -314,7 +315,7 @@ public class UserModelHibImp implements UserModelInt {
 	}
 
 	public boolean forgetPassword(String login) throws RecordNotFoundException, ApplicationException {
-		// TODO Auto-generated method stub
+
 		UserDTO userData = findByLogin(login);
 		boolean flag = false;
 		if (userData == null) {
@@ -341,7 +342,7 @@ public class UserModelHibImp implements UserModelInt {
 	}
 
 	public boolean resetPassword(UserDTO dto) throws ApplicationException, RecordNotFoundException {
-		// TODO Auto-generated method stub
+
 		String newPassword = String.valueOf(new Date().getTime()).substring(0, 4);
 		UserDTO userData = findByPK(dto.getId());
 		userData.setPassword(newPassword);
@@ -371,7 +372,7 @@ public class UserModelHibImp implements UserModelInt {
 	}
 
 	public long registerUser(UserDTO dto) throws ApplicationException, DuplicateRecordException {
-		// TODO Auto-generated method stub
+
 		long pk = add(dto);
 
 		HashMap<String, String> map = new HashMap<String, String>();

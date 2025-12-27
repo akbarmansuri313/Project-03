@@ -85,13 +85,12 @@ public class UserListCtl extends BaseCtl {
 			ArrayList<UserDTO> a = (ArrayList<UserDTO>) list;
 
 			for (UserDTO udto1 : a) {
-				System.out.println(udto1.getRoleId() + "[[[[[[[[[[[--------------------");
 			}
 
-			System.out.println(list + "----------------------------------------------------------");
-			System.out.println(list.indexOf(3));
 			next = model.search(dto, pageNo + 1, pageSize);
+			
 			ServletUtility.setList(list, request);
+			
 			if (list == null || list.size() == 0) {
 				ServletUtility.setErrorMessage("No record found ", request);
 			}
@@ -113,7 +112,7 @@ public class UserListCtl extends BaseCtl {
 
 			e.printStackTrace();
 		}
-		log.debug("UserListCtl doPOst End");
+		log.debug("UserListCtl doGet End");
 	}
 
 	/**
@@ -138,13 +137,13 @@ public class UserListCtl extends BaseCtl {
 
 		String op = DataUtility.getString(request.getParameter("operation"));
 
-// get the selected checkbox ids array for delete list
+      // get the selected checkbox ids array for delete list
 		String[] ids = request.getParameterValues("ids");
 
 		UserModelInt model = ModelFactory.getInstance().getUserModel();
 		try {
 
-			if (OP_SEARCH.equalsIgnoreCase(op) || "Next".equalsIgnoreCase(op) || "Previous".equalsIgnoreCase(op)) {
+			if (OP_SEARCH.equalsIgnoreCase(op) || OP_NEXT.equalsIgnoreCase(op) || OP_PREVIOUS.equalsIgnoreCase(op)) {
 
 				if (OP_SEARCH.equalsIgnoreCase(op)) {
 					pageNo = 1;
@@ -190,10 +189,9 @@ public class UserListCtl extends BaseCtl {
 			ServletUtility.setList(list, request);
 
 			if (list == null || list.size() == 0) {
-				if (!OP_DELETE.equalsIgnoreCase(op)) {
 					ServletUtility.setErrorMessage("No record found ", request);
 				}
-			}
+			
 			if (next == null || next.size() == 0) {
 				request.setAttribute("nextListSize", 0);
 
@@ -213,7 +211,7 @@ public class UserListCtl extends BaseCtl {
 // TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		log.debug("UserListCtl doGet End");
+		log.debug("UserListCtl doPost End");
 	}
 
 	@Override

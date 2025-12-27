@@ -5,6 +5,7 @@
 <hibernate-configuration>
 
 	<session-factory>
+		
 		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/project_3</property>
 		<property name="hibernate.connection.username">root</property>
@@ -16,13 +17,13 @@
 		<!-- <property name="hibernate.cache.provider_class"> org.hibernate.cache.EhCacheProvider</property> 
 			<property name="hibernate.cache.use_second_level_cache"> true</property> -->
 
-
 		<!-- hibernate DCP c3p0 Configuration -->
 		<!-- <property name="hibernate.c3p0.min_size">10</property> Defailt 3 <property 
 			name="hibernate.c3p0.max_size">100</property>Defailt 20 Acquired increment 
 			by default =3 <property name="hibernate.c3p0.timeout">10</property>Defailt 
 			20 <property name="hibernate.c3p0.max_statements">50</property> <property 
 			name="hibernate.c3p0.idle_test_period">3000</property> -->
+			
 		<mapping resource="in/co/rays/project_3/hbm/UserDTO.hbm.xml" />
 		<mapping
 			resource="in/co/rays/project_3/hbm/StudentDTO.hbm.xml" />
@@ -41,4 +42,5 @@
 		<mapping
 			resource="in/co/rays/project_3/hbm/ProductDTO.hbm.xml" />
 	</session-factory>
+	
 </hibernate-configuration>

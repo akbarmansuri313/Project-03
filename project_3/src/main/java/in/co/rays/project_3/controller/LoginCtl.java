@@ -50,7 +50,6 @@ public class LoginCtl extends BaseCtl {
 		if (OP_SIGN_UP.equals(op) || OP_LOG_OUT.equals(op)) {
 			return pass;
 		}
-//		System.out.println(request.getParameter("login") + ".........." + request.getParameter("password"));
 
 		if (DataValidator.isNull(request.getParameter("login"))) {
 			request.setAttribute("login", PropertyReader.getValue("error.require", "Login Id"));
@@ -84,7 +83,6 @@ public class LoginCtl extends BaseCtl {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
-		System.out.println(request.getParameter("login"));
 
 		String op = request.getParameter("operation");
 
