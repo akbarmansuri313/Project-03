@@ -6,6 +6,7 @@ package in.co.rays.project_3.dto;
  * @author Akbar Mansuri
  *
  */
+
 public interface DropdownList {
 public String getKey();
 public String getValue();

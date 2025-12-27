@@ -13,6 +13,7 @@ import org.hibernate.cfg.Configuration;
  */
 public class HibDataSource {
 	private static SessionFactory sessionFactory = null;
+	
 
 	public static SessionFactory getSessionFactory() {
 

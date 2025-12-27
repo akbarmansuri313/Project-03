@@ -2,7 +2,7 @@ version: '3'
 services:
   mysql:
     image: mysql:8.0
-    container_name: orsproject3-mysql
+    container_name: project3-mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: project_3
@@ -15,7 +15,7 @@ services:
   webapp:
     build:
       context: .
-    container_name: orsproject3-webapp
+    container_name: project3-webapp
     ports:
       - "8080:8080"
     networks:

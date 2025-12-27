@@ -177,7 +177,6 @@ public class UserCtl extends BaseCtl {
 		long id = DataUtility.getLong(request.getParameter("id"));
 
 		if (id > 0 || op != null) {
-			System.out.println("in id > 0  condition");
 			UserDTO dto = null;
 			try {
 				dto = model.findByPK(id);
@@ -197,7 +196,6 @@ public class UserCtl extends BaseCtl {
 
 		String op = DataUtility.getString(request.getParameter("operation"));
 
-		// get model
 		UserModelInt model = ModelFactory.getInstance().getUserModel();
 
 		long id = DataUtility.getLong(request.getParameter("id"));

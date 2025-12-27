@@ -4,12 +4,10 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 /**
- * ModelFactory decides which model implementation run
+ * ModelFactory decides which model implementation run....
  * 
  * @author Akbar Mansuri
  * 
- * 
- *
  */
 public final class ModelFactory {
 
@@ -18,6 +16,7 @@ public final class ModelFactory {
 	private static ModelFactory mFactory = null;
 	private static HashMap modelCache = new HashMap();
 
+	
 	private ModelFactory() {
 
 	}

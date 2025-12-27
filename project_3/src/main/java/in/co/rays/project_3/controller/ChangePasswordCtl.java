@@ -104,8 +104,6 @@ public class ChangePasswordCtl extends BaseCtl {
 
 		long id = UserBean.getId();
 
-//		System.out.println("do post id..." + id + "...." + UserBean.getPassword() + ";;;;;;;;;" + UserBean.getId()
-//				+ "....." + newPassword + "...." + oldPassword);
 		if (OP_SAVE.equalsIgnoreCase(op)) {
 
 			try {
