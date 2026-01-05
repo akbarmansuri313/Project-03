@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Logger;
-
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
-
 import in.co.rays.project_3.dto.UserDTO;
 import in.co.rays.project_3.exception.ApplicationException;
 import in.co.rays.project_3.exception.DuplicateRecordException;
@@ -30,6 +27,9 @@ import in.co.rays.project_3.util.HibDataSource;
  */
 public class UserModelHibImp implements UserModelInt {
 
+	/**
+	 *
+	 */
 	public long add(UserDTO dto) throws ApplicationException, DuplicateRecordException {
 
 		UserDTO existDto = null;

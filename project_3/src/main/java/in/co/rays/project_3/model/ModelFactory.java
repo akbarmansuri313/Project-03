@@ -27,20 +27,40 @@ public final class ModelFactory {
 		}
 		return mFactory;
 	}
-
-	public ProductModelInt getProductModel() {
-		ProductModelInt productModel = (ProductModelInt) modelCache.get("productModel");
-		if (productModel == null) {
+	
+	public PatientModelInt getPatientModel() {
+		PatientModelInt patientModel = (PatientModelInt) modelCache.get("patientModel");
+		if (patientModel == null) {
 			if ("Hibernate".equals(DATABASE)) {
-				productModel = new ProductModelHibImp();
+				patientModel = new PatientModelHibImpl();
 			}
 			if ("JDBC".equals(DATABASE)) {
-				productModel = new ProductModelHibImp();
+				patientModel = new PatientModelHibImpl();
 			}
-			modelCache.put("productModel", productModel);
+			modelCache.put("patientModel", patientModel);
 		}
-		return productModel;
+		return patientModel;
 	}
+	
+	
+	public UserModelInt getUserModel() {
+
+		UserModelInt userModel = (UserModelInt) modelCache.get("userModel");
+		if (userModel == null) {
+			if ("Hibernate".equals(DATABASE)) {
+				userModel = new UserModelHibImp();
+			}
+			if ("JDBC".equals(DATABASE)) {
+				userModel = new UserModelJDBCImpl();
+			}
+			modelCache.put("userModel", userModel);
+		}
+
+		return userModel;
+	}
+	
+	
+
 	public MarksheetModelInt getMarksheetModel() {
 		MarksheetModelInt marksheetModel = (MarksheetModelInt) modelCache.get("marksheetModel");
 		if (marksheetModel == null) {
@@ -85,21 +105,7 @@ public final class ModelFactory {
 		return roleModel;
 	}
 
-	public UserModelInt getUserModel() {
-
-		UserModelInt userModel = (UserModelInt) modelCache.get("userModel");
-		if (userModel == null) {
-			if ("Hibernate".equals(DATABASE)) {
-				userModel = new UserModelHibImp();
-			}
-			if ("JDBC".equals(DATABASE)) {
-				userModel = new UserModelJDBCImpl();
-			}
-			modelCache.put("userModel", userModel);
-		}
-
-		return userModel;
-	}
+	
 
 	public StudentModelInt getStudentModel() {
 		StudentModelInt studentModel = (StudentModelInt) modelCache.get("studentModel");
@@ -176,5 +182,20 @@ public final class ModelFactory {
 		}
 
 		return facultyModel;
+	}
+	
+
+	public ProductModelInt getProductModel() {
+		ProductModelInt productModel = (ProductModelInt) modelCache.get("productModel");
+		if (productModel == null) {
+			if ("Hibernate".equals(DATABASE)) {
+				productModel = new ProductModelHibImp();
+			}
+			if ("JDBC".equals(DATABASE)) {
+				productModel = new ProductModelHibImp();
+			}
+			modelCache.put("productModel", productModel);
+		}
+		return productModel;
 	}
 }
