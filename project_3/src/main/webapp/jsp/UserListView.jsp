@@ -88,7 +88,7 @@
 				<div class="col-md-4"></div>
 			</div>
 			<div class="row">
-				<div class="col-md-4"></div>
+				<div class="col-md-4">
 
 				<%
 					if (!ServletUtility.getErrorMessage(request).equals("")) {
@@ -99,6 +99,7 @@
 						<font color="red"> <%=ServletUtility.getErrorMessage(request)%></font>
 					</h4>
 				</div>
+				
 				<%
 					}
 				%>
@@ -155,6 +156,7 @@
 						while (it.hasNext()) {
 								dto = it.next();
 
+								
 								RoleDTO rbean = rmodel.findByPK(dto.getRoleId());
 					%>
 					<tbody>

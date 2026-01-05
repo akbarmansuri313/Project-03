@@ -1,6 +1,7 @@
 package in.co.rays.project_3.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -33,7 +34,9 @@ public class JasperCtl extends BaseCtl {
 
 	/**
 	 * 
+	 * <artifactId>jasperreports</artifactId> <version>6.13.0</version>
 	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -41,16 +44,20 @@ public class JasperCtl extends BaseCtl {
 			throws ServletException, IOException {
 		try {
 
-			// Resource bundle ko get kiya hai..
 			ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.project_3.bundle.system");
 
-			/* Compilation of jrxml file */
-			JasperReport jasperReport = JasperCompileManager.compileReport(rb.getString("jasperctl"));
+			InputStream jrxmlStream = getClass().getClassLoader().getResourceAsStream("Report/Project-03.jrxml");
+
+			JasperReport jasperReport = JasperCompileManager.compileReport(jrxmlStream);
+//
+//			/* Compilation of jrxml file */
+//			JasperReport jasperReport =JasperCompileManager
+//					   .compileReport("D:\\Project-03\\Project-03\\project_3\\src\\main\\resources\\reports\\p3.jrxml");
 
 			HttpSession session = request.getSession(true);
 
 			UserDTO dto = (UserDTO) session.getAttribute("user");
-   
+
 			dto.getFirstName();
 			dto.getLastName();
 
@@ -80,6 +87,7 @@ public class JasperCtl extends BaseCtl {
 			response.getOutputStream().flush();
 
 		} catch (Exception e) {
+			e.printStackTrace();
 
 		}
 	}

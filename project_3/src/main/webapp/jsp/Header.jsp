@@ -27,7 +27,7 @@
 
 <style type="text/css">
 .aj {
-	background-image: linear-gradient(to bottom right, pink, red);
+	background-image: linear-gradient(to bottom right, black, grey);
 }
 </style>
 </head>
@@ -68,6 +68,9 @@
 				<%
 					if (userDto.getRoleId() == RoleDTO.STUDENT) {
 				%>
+				
+				
+				
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -106,6 +109,10 @@
 							href="<%=ORSView.USER_LIST_CTL%>"><i
 							class="fa fa-user-friends"></i>User List</a>
 					</div></li>
+					
+					
+					
+				
 
 				<li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -205,8 +212,20 @@
 							class="fa fa-sort-amount-down"></i>Subject List
 						</a>
 					</div></li>
+					
+						<li class="nav-item dropdown" style="padding-left: 5px;"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Patient</font>
+				</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<%=ORSView.PATIENT_CTL%>"><i
+							class="fa fa-user-circle"></i> Add Patient </a> <a class="dropdown-item"
+							href="<%=ORSView.PATIENT_LIST_CTL%>"><i
+							class="fa fa-user-friends"></i>Patient List</a>
+					</div></li>
 
-				<li class="nav-item dropdown" style="padding-left: 5px"><a
+			<%-- 	<li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> <font style="color: white;">Product
@@ -218,7 +237,7 @@
 							class="fa fa-file"></i>Add Product</a> <a class="dropdown-item"
 							href="<%=ORSView.PRODUCT_LIST_CTL%>"><i class="fa fa-paste"></i>Product
 							List</a>
-					</div></li>
+					</div></li> --%>
 
 				<%
 					}
