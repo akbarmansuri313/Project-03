@@ -20,11 +20,13 @@ C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\te
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\controller\RoleListCtl.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\dto\CollegeDTO.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\model\RoleModelInt.java
+C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\test\Patient.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\util\JDBCDataSource.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\util\EmailMessage.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\controller\UserListCtl.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\model\StudentModelJDBCImpl.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\util\PropertyReader.java
+C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\dto\PatientDTO.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\dto\ProductDTO.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\dto\FacultyDTO.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\model\SubjectModelJDBCImpl.java
@@ -53,6 +55,8 @@ C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\co
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\controller\UserCtl.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\model\RoleModelJDBCImpl.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\controller\FacultyCtl.java
+C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\controller\PatientCtl.java
+C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\controller\PatientListCtl.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\model\CollegeModelJDBCImpl.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\test\SubjectModelTest.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\model\CourseModelHibImp.java
@@ -68,6 +72,7 @@ C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\te
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\controller\FacultyListCtl.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\controller\BaseCtl.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\controller\ProductCtl.java
+C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\model\PatientModelInt.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\exception\ApplicationException.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\model\UserModelJDBCImpl.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\model\MarksheetModelHibImp.java
@@ -93,6 +98,7 @@ C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\co
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\model\CourseModelJDBCImpl.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\model\UserModelHibImp.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\controller\MyProfileCtl.java
+C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\model\PatientModelHibImpl.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\controller\MarksheetListCtl.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\test\CollegeModelTest.java
 C:\Users\DELL\Desktop\Project-03\project_3\src\main\java\in\co\rays\project_3\model\StudentModelHibImp.java

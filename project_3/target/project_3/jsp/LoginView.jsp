@@ -46,7 +46,7 @@ i.css {
 }
 
 .p4 {
-	background-image: url('<%=ORSView.APP_CONTEXT%>/img/loginhere.jpg');
+	background-image: url('<%=ORSView.APP_CONTEXT%>/img/login2.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed; 
 	background-size: cover;
@@ -119,6 +119,7 @@ i.css {
 								<input type="hidden" name="modifiedDatetime"
 									value="<%=DataUtility.getTimestamp(dto.getModifiedDatetime())%>">
 							</div>
+
 
 							<span class="pl-sm-5"><b>Email Id</b> <span
 								style="color: red;">*</span></span> </br>
