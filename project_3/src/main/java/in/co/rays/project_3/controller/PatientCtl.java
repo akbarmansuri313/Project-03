@@ -145,15 +145,17 @@ public class PatientCtl extends BaseCtl {
 
 		String op = DataUtility.getString(request.getParameter("operation"));
 
-		System.out.println("gggggggggggggggg");
 		PatientModelInt model = ModelFactory.getInstance().getPatientModel();
 
 		if (OP_SAVE.equalsIgnoreCase(op)) {
+			
 			PatientDTO dto = (PatientDTO) populateDTO(request);
 			long pk = model.add(dto);
+			
 			ServletUtility.setSuccessMessage("Patient Successfully saved", request);
 
 		} else if (OP_UPDATE.equalsIgnoreCase(op)) {
+			
 			PatientDTO dto = (PatientDTO) populateDTO(request);
 			if (dto.getId() > 0) {
 				model.update(dto);
@@ -163,7 +165,7 @@ public class PatientCtl extends BaseCtl {
 
 		} else if (OP_CANCEL.equalsIgnoreCase(op)) {
 
-			ServletUtility.redirect(ORSView.PATIENT_CTL, request, response);
+			ServletUtility.redirect(ORSView.PATIENT_LIST_CTL, request, response);
 			return;
 
 		} else if (OP_RESET.equalsIgnoreCase(op)) {

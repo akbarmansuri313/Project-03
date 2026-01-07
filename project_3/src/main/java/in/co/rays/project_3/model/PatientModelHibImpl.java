@@ -105,6 +105,7 @@ public class PatientModelHibImpl implements PatientModelInt {
 		try {
 			session = HibDataSource.getSession();
 			Criteria criteria = session.createCriteria(PatientDTO.class);
+			
 			if (dto != null) {
 				if (dto.getId() != null) {
 					criteria.add(Restrictions.like("id", dto.getId()));

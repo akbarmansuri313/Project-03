@@ -16,7 +16,6 @@
 	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 	crossorigin="anonymous">
 
-
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script
@@ -27,8 +26,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-.img {
-	background-image: linear-gradient(to bottom right, black, blue);
+.aj {
+	background-image: linear-gradient(to bottom right, black, grey);
 }
 </style>
 </head>
@@ -44,15 +43,16 @@
 			String role = (String) session.getAttribute("role");
 			welcomeMsg += userDto.getFirstName() + " (" + role + ")";
 		} else {
+			
 			welcomeMsg += "Guest";
-		}
+		}	
 	%>
 	<div class="header">
-		<nav class="navbar navbar-expand-lg fixed-top img"> <a
+		<nav class="navbar navbar-expand-lg fixed-top aj"> <a
 			class="navbar-brand" href="<%=ORSView.WELCOME_CTL%>"><img
 			src="<%=ORSView.APP_CONTEXT%>/img/custom.png" width="190px"
 			height="50px"></a>
-		<button class="navbar-toggler " type="button" data-toggle="collapse"
+		<button class="navbar-toggler " type="button" data-toggle=""
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"> <i class="fa fa-bars"
@@ -68,6 +68,9 @@
 				<%
 					if (userDto.getRoleId() == RoleDTO.STUDENT) {
 				%>
+				
+				
+				
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -106,6 +109,10 @@
 							href="<%=ORSView.USER_LIST_CTL%>"><i
 							class="fa fa-user-friends"></i>User List</a>
 					</div></li>
+					
+					
+					
+				
 
 				<li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -124,7 +131,7 @@
 							class="dropdown-item" href="<%=ORSView.GET_MARKSHEET_CTL%>"><i
 							class="fa fa-copy"></i>Get Marksheet</a>
 					</div></li>
-
+	
 				<li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -205,8 +212,20 @@
 							class="fa fa-sort-amount-down"></i>Subject List
 						</a>
 					</div></li>
+					
+						<li class="nav-item dropdown" style="padding-left: 5px;"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Patient</font>
+				</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<%=ORSView.PATIENT_CTL%>"><i
+							class="fa fa-user-circle"></i> Add Patient </a> <a class="dropdown-item"
+							href="<%=ORSView.PATIENT_LIST_CTL%>"><i
+							class="fa fa-user-friends"></i>Patient List</a>
+					</div></li>
 
-				<li class="nav-item dropdown" style="padding-left: 5px"><a
+			<%-- 	<li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> <font style="color: white;">Product
@@ -218,7 +237,7 @@
 							class="fa fa-file"></i>Add Product</a> <a class="dropdown-item"
 							href="<%=ORSView.PRODUCT_LIST_CTL%>"><i class="fa fa-paste"></i>Product
 							List</a>
-					</div></li>
+					</div></li> --%>
 
 				<%
 					}

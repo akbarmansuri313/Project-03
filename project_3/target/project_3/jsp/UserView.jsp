@@ -1,4 +1,4 @@
-R<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <%@page import="in.co.rays.project_3.controller.UserCtl"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="in.co.rays.project_3.util.HTMLUtility"%>
@@ -13,17 +13,18 @@ R<%@page import="java.util.List"%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>User view</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style type="text/css">
 
 i.css {
-	border: 2px solid #8080803b;
+   	border: 2px solid #8080803b;
 	padding-left: 10px;
-	 padding-bottom: 11px; 
-	 background-color: #ebebe0;
+	padding-bottom: 11px; 
+	background-color: #ebebe0;
 }
+
 .input-group-addon{
 	box-shadow: 9px 8px 7px #001a33;
-
 }
 
 .hm {
@@ -32,9 +33,9 @@ i.css {
 	background-attachment: fixed; 
 	background-size: cover;
 	padding-top: 75px;
-	
-	/* background-size: 100%; */
+	background-size: 100%;
 }
+
 </style>
 
 </head>
@@ -57,10 +58,10 @@ i.css {
 						<div class="card-body">
 
 							<%
-							  long id=DataUtility.getLong(request.getParameter("id"));
+							  long id = DataUtility.getLong(request.getParameter("id"));
 							
 							
-								if (dto.getFirstName()!=null) {
+								if (dto.getId() != null && dto.getId() > 0) {
 							%>
 							<h3 class="text-center default-text text-primary">Update User</h3>
 							<%
@@ -100,7 +101,6 @@ i.css {
 									<%
 										}
 									%>
-
 								</H4>
 
 								<input type="hidden" name="id" value="<%=dto.getId()%>">
@@ -250,7 +250,6 @@ i.css {
 									value="<%=UserCtl.OP_UPDATE%>"> <input type="submit"
 									name="operation" class="btn btn-warning btn-md"
 									style="font-size: 17px" value="<%=UserCtl.OP_CANCEL%>">
-
 							</div>
 							<%
 								} else {
@@ -266,18 +265,13 @@ i.css {
 								<%
 								}
 								%>
-						
-
 						</div>
-					
 					</div>
 				</div>
 		</form>
 		</main>
           	<div class="col-md-4 mb-4"></div>
-
 	</div>
-
 </body>
 <%@include file="FooterView.jsp"%>
 

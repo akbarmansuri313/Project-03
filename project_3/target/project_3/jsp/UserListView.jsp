@@ -1,4 +1,3 @@
-
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="in.co.rays.project_3.model.ModelFactory"%>
@@ -89,7 +88,7 @@
 				<div class="col-md-4"></div>
 			</div>
 			<div class="row">
-				<div class="col-md-4"></div>
+				<div class="col-md-4">
 
 				<%
 					if (!ServletUtility.getErrorMessage(request).equals("")) {
@@ -100,6 +99,7 @@
 						<font color="red"> <%=ServletUtility.getErrorMessage(request)%></font>
 					</h4>
 				</div>
+				
 				<%
 					}
 				%>
@@ -130,6 +130,7 @@
 						type="submit" class="btn btn-dark btn-md" style="font-size: 15px"
 						name="operation" value="<%=UserListCtl.OP_RESET%>">
 				</div>
+				
 				<div class="col-sm-1"></div>
 			</div>
 
@@ -155,6 +156,7 @@
 						while (it.hasNext()) {
 								dto = it.next();
 
+								
 								RoleDTO rbean = rmodel.findByPK(dto.getRoleId());
 					%>
 					<tbody>
@@ -185,7 +187,7 @@
 					<td><input type="submit" name="operation"
 						class="btn btn-warning btn-md" style="font-size: 17px"
 						value="<%=UserListCtl.OP_PREVIOUS%>"
-						<%=pageNo > 1 ? "" : "disabled"%>></td>
+						<%=pageNo == 1 ? "disabled" : ""%>></td>
 					<td><input type="submit" name="operation"
 						class="btn btn-primary btn-md" style="font-size: 17px"
 						value="<%=UserListCtl.OP_NEW%>"></td>
@@ -254,11 +256,7 @@
 			<input type="hidden" name="pageNo" value="<%=pageNo%>"> <input
 				type="hidden" name="pageSize" value="<%=pageSize%>">
 		</form>
-
-
 	</div>
-
-
 </body>
 <%@include file="FooterView.jsp"%>
 </html>

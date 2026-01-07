@@ -6,11 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 .p1 {
-	padding-top: 1px;
+	padding-top: 10px;
 }
 
 body {
-	background-image: url('img/amit.jpg');
+	background-image: url('img/cyber.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -21,7 +21,7 @@ body {
 			<img src="img/custom.png" width="318" height="120" border="0">
 		</h1>
 		<h1 align="Center">
-			<a href="<%=ORSView.WELCOME_CTL%>" style="color: indigo;"> <font
+			<a href="<%=ORSView.WELCOME_CTL%>" style="color: white;"> <font
 				size="8px">Online Result System</font></a>
 		</h1>
 	</div>

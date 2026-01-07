@@ -44,7 +44,6 @@ public class PatientListCtl extends BaseCtl {
 
 		log.debug("PatientListCtl doGet Start");
 
-		System.out.println("sdfghnbdfgh");
 		
 		List list;
 		List next;
@@ -53,7 +52,6 @@ public class PatientListCtl extends BaseCtl {
 		int pageSize = DataUtility.getInt(PropertyReader.getValue("page.size"));
 
 		PatientDTO dto = (PatientDTO) populateDTO(request);
-		// get the selected checkbox ids array for delete list
 
 		PatientModelInt model = ModelFactory.getInstance().getPatientModel();
 		try {
@@ -161,11 +159,13 @@ public class PatientListCtl extends BaseCtl {
 		ServletUtility.setPageNo(pageNo, request);
 		ServletUtility.setPageSize(pageSize, request);
 		ServletUtility.forward(getView(), request, response);
+		
+		
 		log.debug("PatientListCtl doPost End");
 	}
 
 	@Override
 	protected String getView() {
-		return ORSView.PATIENT_LIST_VIEW; // Replace with actual view
+		return ORSView.PATIENT_LIST_VIEW; 
 	}
 }
