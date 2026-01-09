@@ -10,6 +10,7 @@ in\co\rays\project_3\dto\SubjectDTO.class
 in\co\rays\project_3\controller\GetMarksheetCtl.class
 in\co\rays\project_3\controller\SubjectListCtl.class
 in\co\rays\project_3\model\CollegeModelJDBCImpl.class
+in\co\rays\project_3\controller\ErrorCtl.class
 in\co\rays\project_3\model\FacultyModelHibImp.class
 in\co\rays\project_3\dto\DropdownList.class
 in\co\rays\project_3\test\StudentModelTest.class
