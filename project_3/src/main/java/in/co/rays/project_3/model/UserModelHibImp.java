@@ -261,7 +261,7 @@ public class UserModelHibImp implements UserModelInt {
 
 	    } catch (HibernateException e) {
 
-	        System.out.println("❌ Database connection problem");
+	        System.out.println(" Database connection problem");
 	        e.printStackTrace();
 
 	        throw new ApplicationException("Database is not available");
