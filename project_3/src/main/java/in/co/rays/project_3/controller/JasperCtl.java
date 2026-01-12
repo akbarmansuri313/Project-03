@@ -46,13 +46,15 @@ public class JasperCtl extends BaseCtl {
 
 			ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.project_3.bundle.system");
 
-			InputStream jrxmlStream = getClass().getClassLoader().getResourceAsStream("report/Projcet03.jrxml");
+			String jasperFile = System.getenv("jasperctl");
 
-			if (jrxmlStream == null) {
-				throw new RuntimeException("JRXML NOT FOUND : Report/Projcet03.jrxml");
+			System.out.println("jasperctl path before =" + jasperFile);
+			if (jasperFile == null) {
+				jasperFile = getServletContext().getRealPath("/jasper/Projcet03.jrxml");
 			}
+//			InputStream jrxmlStream = getClass().getClassLoader().getResourceAsStream("report/Projcet03.jrxml");
 
-			JasperReport jasperReport = JasperCompileManager.compileReport(jrxmlStream);
+			JasperReport jasperReport = JasperCompileManager.compileReport(jasperFile);
 //
 //			/* Compilation of jrxml file */
 //			JasperReport jasperReport =JasperCompileManager
