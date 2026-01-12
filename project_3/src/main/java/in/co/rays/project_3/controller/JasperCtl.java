@@ -36,7 +36,7 @@ public class JasperCtl extends BaseCtl {
 	 * 
 	 * <artifactId>jasperreports</artifactId> <version>6.13.0</version>
 	 */
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -46,10 +46,10 @@ public class JasperCtl extends BaseCtl {
 
 			ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.project_3.bundle.system");
 
-			InputStream jrxmlStream = getClass().getClassLoader().getResourceAsStream("report/Pro-03.jrxml");
-			
+			InputStream jrxmlStream = getClass().getClassLoader().getResourceAsStream("report/Projcet03.jrxml");
+
 			if (jrxmlStream == null) {
-			    throw new RuntimeException("JRXML NOT FOUND : Report/Pro-03.jrxml");
+				throw new RuntimeException("JRXML NOT FOUND : Report/Projcet03.jrxml");
 			}
 
 			JasperReport jasperReport = JasperCompileManager.compileReport(jrxmlStream);
