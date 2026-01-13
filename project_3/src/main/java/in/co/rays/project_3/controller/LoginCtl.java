@@ -156,7 +156,7 @@ public class LoginCtl extends BaseCtl {
 					dto = (UserDTO) populateDTO(request);
 					ServletUtility.setDto(dto, request);
 					ServletUtility.setErrorMessage("Invalid LoginId And Password!", request);
-					ServletUtility.setErrorMessage("Data Base Server is down Try After some time.....", request);
+					
 				}
 
 			} catch (ApplicationException e) {
