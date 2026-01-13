@@ -16,7 +16,6 @@ public final class ModelFactory {
 	private static ModelFactory mFactory = null;
 	private static HashMap modelCache = new HashMap();
 
-	
 	private ModelFactory() {
 
 	}
@@ -27,7 +26,23 @@ public final class ModelFactory {
 		}
 		return mFactory;
 	}
-	
+
+	public EmployeeModelInt getEmployeeModel() {
+
+		EmployeeModelInt employeeModel = (EmployeeModelInt) modelCache.get("employeeModel");
+		if (employeeModel == null) {
+			if ("Hibernate".equals(DATABASE)) {
+				employeeModel = new EmployeeModelHibImpl();
+			}
+			if ("JDBC".equals(DATABASE)) {
+				employeeModel = new EmployeeModelJDBCImpl();
+			}
+			modelCache.put("employeeModel", employeeModel);
+		}
+
+		return employeeModel;
+	}
+
 	public PatientModelInt getPatientModel() {
 		PatientModelInt patientModel = (PatientModelInt) modelCache.get("patientModel");
 		if (patientModel == null) {
@@ -41,8 +56,7 @@ public final class ModelFactory {
 		}
 		return patientModel;
 	}
-	
-	
+
 	public UserModelInt getUserModel() {
 
 		UserModelInt userModel = (UserModelInt) modelCache.get("userModel");
@@ -58,8 +72,6 @@ public final class ModelFactory {
 
 		return userModel;
 	}
-	
-	
 
 	public MarksheetModelInt getMarksheetModel() {
 		MarksheetModelInt marksheetModel = (MarksheetModelInt) modelCache.get("marksheetModel");
@@ -104,8 +116,6 @@ public final class ModelFactory {
 		}
 		return roleModel;
 	}
-
-	
 
 	public StudentModelInt getStudentModel() {
 		StudentModelInt studentModel = (StudentModelInt) modelCache.get("studentModel");
@@ -183,7 +193,6 @@ public final class ModelFactory {
 
 		return facultyModel;
 	}
-	
 
 	public ProductModelInt getProductModel() {
 		ProductModelInt productModel = (ProductModelInt) modelCache.get("productModel");

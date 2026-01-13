@@ -24,6 +24,12 @@ public interface ORSView {
 
 	public String USER_VIEW = PAGE_FOLDER + "/UserView.jsp";
 
+	public String PATIENT_CTL = APP_CONTEXT + "/ctl/PatientCtl";
+	public String PATIENT_VIEW = PAGE_FOLDER + "/PatientView.jsp";
+
+	public String PATIENT_LIST_CTL = APP_CONTEXT + "/ctl/PatientListCtl";
+	public String PATIENT_LIST_VIEW = PAGE_FOLDER + "/PatientListView.jsp";
+
 	public String USER_LIST_VIEW = PAGE_FOLDER + "/UserListView.jsp";
 
 	public String COLLEGE_VIEW = PAGE_FOLDER + "/CollegeView.jsp";
@@ -129,11 +135,11 @@ public interface ORSView {
 	public String FORGET_PASSWORD_CTL = APP_CONTEXT + "/ForgetPasswordCtl";
 
 	public String MARKSHEET_MERIT_LIST_CTL = APP_CONTEXT + "/ctl/MarksheetMeritListCtl";
-	
-	public String PATIENT_CTL = APP_CONTEXT + "/ctl/PatientCtl";
-	public String PATIENT_VIEW = PAGE_FOLDER + "/PatientView.jsp";
-	
-	public String PATIENT_LIST_CTL = APP_CONTEXT + "/ctl/PatientListCtl";
-	public String PATIENT_LIST_VIEW = PAGE_FOLDER + "/PatientListView.jsp";
+
+	public String EMPLOYEE_CTL = APP_CONTEXT + "/ctl/EmployeeCtl";
+	public String EMPLOYEE_VIEW = PAGE_FOLDER + "/EmployeeView.jsp";
+
+	public String EMPLOYEE_LIST_CTL = APP_CONTEXT + "/ctl/EmployeeListCtl";
+	public String EMPLOYEE_LIST_VIEW = PAGE_FOLDER + "/EmployeeListView.jsp";
 
 }
