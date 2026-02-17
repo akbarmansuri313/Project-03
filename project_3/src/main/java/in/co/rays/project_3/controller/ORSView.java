@@ -141,5 +141,11 @@ public interface ORSView {
 
 	public String EMPLOYEE_LIST_CTL = APP_CONTEXT + "/ctl/EmployeeListCtl";
 	public String EMPLOYEE_LIST_VIEW = PAGE_FOLDER + "/EmployeeListView.jsp";
+	
+	public String TRANSPORTATION_CTL = APP_CONTEXT + "/ctl/TransportationCtl";
+	public String TRANSPORTATION_VIEW = PAGE_FOLDER + "/TransportationView.jsp";
+
+	public String TRANSPORTATION_LIST_CTL = APP_CONTEXT + "/ctl/TransportationListCtl";
+	public String TRANSPORTATION_LIST_VIEW = PAGE_FOLDER + "/TransportationListView.jsp";
 
 }

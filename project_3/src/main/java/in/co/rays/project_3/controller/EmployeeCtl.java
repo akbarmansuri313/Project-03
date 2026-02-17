@@ -17,13 +17,14 @@ import in.co.rays.project_3.model.EmployeeModelInt;
 import in.co.rays.project_3.model.ModelFactory;
 import in.co.rays.project_3.util.DataUtility;
 import in.co.rays.project_3.util.DataValidator;
+import in.co.rays.project_3.util.HibDataSource;
 import in.co.rays.project_3.util.PropertyReader;
 import in.co.rays.project_3.util.ServletUtility;
 
 /**
  * EmployeeCtl handles Employee operations like Add, Update and View
  * 
- * @author  Akbar Mansuri
+ * @author Akbar Mansuri
  * @version 1.0
  */
 @WebServlet(urlPatterns = { "/ctl/EmployeeCtl" })
@@ -44,8 +45,7 @@ public class EmployeeCtl extends BaseCtl {
 		boolean pass = true;
 
 		if (DataValidator.isNull(request.getParameter("fullName"))) {
-			request.setAttribute("fullName",
-					PropertyReader.getValue("error.require", "fullName"));
+			request.setAttribute("fullName", PropertyReader.getValue("error.require", "fullName"));
 			pass = false;
 		} else if (!DataValidator.isName(request.getParameter("fullName"))) {
 			request.setAttribute("fullName", "Full Name must contain alphabets only");
@@ -53,33 +53,28 @@ public class EmployeeCtl extends BaseCtl {
 		}
 
 		if (DataValidator.isNull(request.getParameter("username"))) {
-			request.setAttribute("username",
-					PropertyReader.getValue("error.require", "username"));
+			request.setAttribute("username", PropertyReader.getValue("error.require", "username"));
 			pass = false;
 		}
 
 		if (DataValidator.isNull(request.getParameter("password"))) {
-			request.setAttribute("password",
-					PropertyReader.getValue("error.require", "password"));
+			request.setAttribute("password", PropertyReader.getValue("error.require", "password"));
 			pass = false;
 		} else if (!DataValidator.isPasswordLength(request.getParameter("password"))) {
 			request.setAttribute("password", "Password should be 8 to 12 characters");
 			pass = false;
 		} else if (!DataValidator.isPassword(request.getParameter("password"))) {
-			request.setAttribute("password",
-					"Password must contain upper, lower, digit & special character");
+			request.setAttribute("password", "Password must contain upper, lower, digit & special character");
 			pass = false;
 		}
 
 		if (DataValidator.isNull(request.getParameter("birthDate"))) {
-			request.setAttribute("birthDate",
-					PropertyReader.getValue("error.require", "birthDate"));
+			request.setAttribute("birthDate", PropertyReader.getValue("error.require", "birthDate"));
 			pass = false;
 		}
 
 		if (DataValidator.isNull(request.getParameter("contactNo"))) {
-			request.setAttribute("contactNo",
-					PropertyReader.getValue("error.require", "contactNo"));
+			request.setAttribute("contactNo", PropertyReader.getValue("error.require", "contactNo"));
 			pass = false;
 		} else if (!DataValidator.isPhoneNo(request.getParameter("contactNo"))) {
 			request.setAttribute("contactNo", "Invalid Contact Number");
@@ -129,7 +124,7 @@ public class EmployeeCtl extends BaseCtl {
 				EmployeeDTO dto = model.findByPK(id);
 				ServletUtility.setDto(dto, request);
 			} catch (ApplicationException e) {
-				log.error("Error in EmployeeCtl doGet", e);
+
 				ServletUtility.handleException(e, request, response);
 				return;
 			}
@@ -161,23 +156,28 @@ public class EmployeeCtl extends BaseCtl {
 				if (id > 0) {
 					dto.setId(id);
 					model.update(dto);
-					ServletUtility.setSuccessMessage(
-							"Employee Updated Successfully", request);
+					ServletUtility.setSuccessMessage("Employee Updated Successfully", request);
 				} else {
 					model.add(dto);
-					ServletUtility.setSuccessMessage(
-							"Employee Added Successfully", request);
+					
+					ServletUtility.setSuccessMessage("Employee Added Successfully", request);
 				}
 				ServletUtility.setDto(dto, request);
 
 			} catch (ApplicationException e) {
-				log.error("ApplicationException in EmployeeCtl doPost", e);
-				ServletUtility.handleException(e, request, response);
+
+				ServletUtility.setErrorMessage(e.getMessage(), request);
+				ServletUtility.forward(getView(), request, response);
 				return;
+				
 			} catch (DuplicateRecordException e) {
-				log.error("DuplicateRecordException in EmployeeCtl doPost", e);
+				
+				ServletUtility.setErrorMessage(e.getMessage(), request);
 				ServletUtility.setDto(dto, request);
 				ServletUtility.setErrorMessage("Username Already Exists", request);
+				ServletUtility.forward(getView(), request, response);
+			
+				
 			}
 
 		} else if (OP_RESET.equalsIgnoreCase(op)) {

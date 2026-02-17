@@ -56,6 +56,7 @@ public class EmployeeModelHibImpl implements EmployeeModelInt {
 			if (tx != null) {
 				tx.rollback();
 			}
+		     HibDataSource.handleException(e);
 			throw new ApplicationException("Exception in Employee Add " + e.getMessage());
 
 		} finally {
@@ -96,6 +97,7 @@ public class EmployeeModelHibImpl implements EmployeeModelInt {
 			if (tx != null) {
 				tx.rollback();
 			}
+			HibDataSource.handleException(e);
 			throw new ApplicationException("Exception in Employee update " + e.getMessage());
 
 		} finally {
@@ -129,6 +131,7 @@ public class EmployeeModelHibImpl implements EmployeeModelInt {
 			if (tx != null) {
 				tx.rollback();
 			}
+			HibDataSource.handleException(e);
 			throw new ApplicationException("Exception in Employee Delete " + e.getMessage());
 
 		} finally {
@@ -193,6 +196,7 @@ public class EmployeeModelHibImpl implements EmployeeModelInt {
 
 		} catch (HibernateException e) {
 			e.printStackTrace();
+			HibDataSource.handleException(e);
 			throw new ApplicationException("Exception in getting employee by username ");
 
 		} finally {
@@ -273,6 +277,8 @@ public class EmployeeModelHibImpl implements EmployeeModelInt {
 			list = criteria.list();
 
 		} catch (HibernateException e) {
+			
+			HibDataSource.handleException(e);
 			throw new ApplicationException("Exception in Employee search");
 
 		} finally {

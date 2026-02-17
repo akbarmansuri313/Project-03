@@ -7,6 +7,7 @@ import java.util.List;
 
 import in.co.rays.project_3.dto.PatientDTO;
 import in.co.rays.project_3.dto.RoleDTO;
+import in.co.rays.project_3.exception.ApplicationException;
 import in.co.rays.project_3.model.ModelFactory;
 import in.co.rays.project_3.model.PatientModelHibImpl;
 import in.co.rays.project_3.model.PatientModelInt;
@@ -16,8 +17,8 @@ public class Patient {
 
 	public static PatientModelInt model = new PatientModelHibImpl();
 
-	public static void main(String[] args) {
-//		testAdd();
+	public static void main(String[] args) throws ApplicationException {
+		testAdd();
 
 		testSearch();
 	}
@@ -37,7 +38,7 @@ public class Patient {
 
 	}
 
-	private static void testAdd() {
+	private static void testAdd() throws ApplicationException {
 
 		PatientDTO dto = new PatientDTO();
 

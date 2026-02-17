@@ -10,12 +10,13 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import in.co.rays.project_3.dto.PatientDTO;
+import in.co.rays.project_3.exception.ApplicationException;
 import in.co.rays.project_3.util.HibDataSource;
 
 public class PatientModelHibImpl implements PatientModelInt {
 
 	@Override
-	public long add(PatientDTO dto) {
+	public long add(PatientDTO dto) throws ApplicationException {
 
 		Session session = HibDataSource.getSession();
 		Transaction tx = null;
@@ -26,16 +27,20 @@ public class PatientModelHibImpl implements PatientModelInt {
 			tx.commit();
 
 		} catch (HibernateException e) {
+			
 			if (tx != null) {
 				tx.rollback();
 			}
-		} finally {
+			HibDataSource.handleException(e);
+			throw new ApplicationException("Exception in User Add " + e.getMessage());	
+			}finally {
+		
 			session.close();
 		}
 		return dto.getId();
 	}
 
-	public void delete(PatientDTO dto) {
+	public void delete(PatientDTO dto)  {
 
 		Session session = null;
 		Transaction tx = null;
@@ -55,7 +60,7 @@ public class PatientModelHibImpl implements PatientModelInt {
 		}
 	}
 
-	public void update(PatientDTO dto) {
+	public void update(PatientDTO dto) throws ApplicationException {
 
 		Session session = null;
 		Transaction tx = null;
@@ -70,12 +75,14 @@ public class PatientModelHibImpl implements PatientModelInt {
 			if (tx != null) {
 				tx.rollback();
 			}
+			HibDataSource.handleException(e);
+			throw new ApplicationException("Exception in User Add " + e.getMessage());	
 		} finally {
 			session.close();
 		}
 	}
 
-	public PatientDTO findByPK(long pk) {
+	public PatientDTO findByPK(long pk) throws ApplicationException {
 
 		Session session = null;
 		PatientDTO dto = null;
@@ -85,6 +92,7 @@ public class PatientModelHibImpl implements PatientModelInt {
 			dto = (PatientDTO) session.get(PatientDTO.class, pk);
 
 		} catch (HibernateException e) {
+			throw new ApplicationException("Exception in User Add " + e.getMessage());	
 		} finally {
 			session.close();
 		}
@@ -132,6 +140,8 @@ public class PatientModelHibImpl implements PatientModelInt {
 			list = (ArrayList<PatientDTO>) criteria.list();
 
 		} catch (HibernateException e) {
+			
+			
 
 		} finally {
 

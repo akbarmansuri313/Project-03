@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import in.co.rays.project_3.dto.BaseDTO;
 import in.co.rays.project_3.dto.PatientDTO;
+import in.co.rays.project_3.exception.ApplicationException;
 import in.co.rays.project_3.model.ModelFactory;
 import in.co.rays.project_3.model.PatientModelInt;
 import in.co.rays.project_3.util.DataUtility;
@@ -33,19 +34,6 @@ public class PatientCtl extends BaseCtl {
 		map.put("Influenza", "Influenza");
 		map.put("Heart Attack", "Heart Attack");
 		request.setAttribute("map", map);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 
 		HashMap<String, String> map1 = new HashMap<String, String>();
 		map1.put("Male", "Male");
@@ -132,9 +120,16 @@ public class PatientCtl extends BaseCtl {
 
 			PatientDTO dto = null;
 
-			dto = model.findByPK(id);
+			try {
+				dto = model.findByPK(id);
+				
+				ServletUtility.setDto(dto, request);
+			} catch (ApplicationException e) {
+			
+				e.printStackTrace();
+			}
 
-			ServletUtility.setDto(dto, request);
+			
 		}
 		ServletUtility.forward(getView(), request, response);
 	}
@@ -148,20 +143,35 @@ public class PatientCtl extends BaseCtl {
 		PatientModelInt model = ModelFactory.getInstance().getPatientModel();
 
 		if (OP_SAVE.equalsIgnoreCase(op)) {
-			
+
 			PatientDTO dto = (PatientDTO) populateDTO(request);
-			long pk = model.add(dto);
-			
-			ServletUtility.setSuccessMessage("Patient Successfully saved", request);
+			try {
+				long pk = model.add(dto);
+				ServletUtility.setDto(dto, request);
+				ServletUtility.setSuccessMessage("Patient Successfully saved", request);
+				
+			} catch (ApplicationException e) {
+				
+				ServletUtility.setErrorMessage(e.getMessage(), request);
+				
+				ServletUtility.forward(getView(), request, response);
+				return;
+			}
 
 		} else if (OP_UPDATE.equalsIgnoreCase(op)) {
-			
+
 			PatientDTO dto = (PatientDTO) populateDTO(request);
 			if (dto.getId() > 0) {
-				model.update(dto);
+				try {
+					model.update(dto);
+					ServletUtility.setDto(dto, request);
+					ServletUtility.setSuccessMessage("Patient Updated Successfully", request);
+				} catch (ApplicationException e) {
+
+					ServletUtility.setErrorMessage(e.getMessage(), request);
+					e.printStackTrace();
+				}
 			}
-			ServletUtility.setDto(dto, request);
-			ServletUtility.setSuccessMessage("Patient Updated Successfully", request);
 
 		} else if (OP_CANCEL.equalsIgnoreCase(op)) {
 

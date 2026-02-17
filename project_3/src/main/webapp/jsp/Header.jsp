@@ -224,8 +224,20 @@
 							href="<%=ORSView.EMPLOYEE_LIST_CTL%>"><i
 							class="fa fa-id-badge"></i>Employee List</a>
 					</div></li>
-				<%-- 
-				<li class="nav-item dropdown" style="padding-left: 5px;"><a
+					
+						<li class="nav-item dropdown" style="padding-left: 5px;"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Transportation</font>
+				</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="<%=ORSView.TRANSPORTATION_CTL%>"><i
+							class="fa fa-user-plus"></i>Add Transportation</a> <a class="dropdown-item"
+							href="<%=ORSView.TRANSPORTATION_LIST_CTL%>"><i
+							class="fa fa-id-badge"></i>Transportation	 List</a>
+					</div></li>
+				
+				<%-- <li class="nav-item dropdown" style="padding-left: 5px;"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> <font style="color: white;">Patient</font>
@@ -235,8 +247,8 @@
 							class="fa fa-user-circle"></i> Add Patient </a> <a
 							class="dropdown-item" href="<%=ORSView.PATIENT_LIST_CTL%>"><i
 							class="fa fa-user-friends"></i>Patient List</a>
-					</div></li> --%>
-
+					</div></li>
+ --%>
 				<%-- 	<li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"

@@ -52,6 +52,7 @@ public class UserModelHibImp implements UserModelInt {
 				tx.rollback();
 
 			}
+				HibDataSource.handleException(e);
 			throw new ApplicationException("Exception in User Add " + e.getMessage());
 		} finally {
 			session.close();
@@ -74,6 +75,7 @@ public class UserModelHibImp implements UserModelInt {
 			if (tx != null) {
 				tx.rollback();
 			}
+			HibDataSource.handleException(e);
 			throw new ApplicationException("Exception in User Delete" + e.getMessage());
 		} finally {
 			session.close();
@@ -136,6 +138,8 @@ public class UserModelHibImp implements UserModelInt {
 			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
+			
+			HibDataSource.handleException(e);
 			throw new ApplicationException("Exception in getting User by Login " + e.getMessage());
 
 		} finally {
@@ -264,6 +268,8 @@ public class UserModelHibImp implements UserModelInt {
 	        System.out.println(" Database connection problem");
 	        e.printStackTrace();
 
+	        HibDataSource.handleException(e);
+	        
 	        throw new ApplicationException("Database is not available");
 
 	    } finally {

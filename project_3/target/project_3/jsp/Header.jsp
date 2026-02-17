@@ -43,9 +43,9 @@
 			String role = (String) session.getAttribute("role");
 			welcomeMsg += userDto.getFirstName() + " (" + role + ")";
 		} else {
-			
+
 			welcomeMsg += "Guest";
-		}	
+		}
 	%>
 	<div class="header">
 		<nav class="navbar navbar-expand-lg fixed-top aj"> <a
@@ -68,9 +68,9 @@
 				<%
 					if (userDto.getRoleId() == RoleDTO.STUDENT) {
 				%>
-				
-				
-				
+
+
+
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -109,10 +109,10 @@
 							href="<%=ORSView.USER_LIST_CTL%>"><i
 							class="fa fa-user-friends"></i>User List</a>
 					</div></li>
-					
-					
-					
-				
+
+
+
+
 
 				<li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -131,7 +131,7 @@
 							class="dropdown-item" href="<%=ORSView.GET_MARKSHEET_CTL%>"><i
 							class="fa fa-copy"></i>Get Marksheet</a>
 					</div></li>
-	
+
 				<li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -212,20 +212,44 @@
 							class="fa fa-sort-amount-down"></i>Subject List
 						</a>
 					</div></li>
+
+				<li class="nav-item dropdown" style="padding-left: 5px;"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Employee</font>
+				</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="<%=ORSView.EMPLOYEE_CTL%>"><i
+							class="fa fa-user-plus"></i>Add Employee</a> <a class="dropdown-item"
+							href="<%=ORSView.EMPLOYEE_LIST_CTL%>"><i
+							class="fa fa-id-badge"></i>Employee List</a>
+					</div></li>
 					
 						<li class="nav-item dropdown" style="padding-left: 5px;"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Transportation</font>
+				</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="<%=ORSView.TRANSPORTATION_CTL%>"><i
+							class="fa fa-user-plus"></i>Add Transportation</a> <a class="dropdown-item"
+							href="<%=ORSView.TRANSPORTATION_LIST_CTL%>"><i
+							class="fa fa-id-badge"></i>Transportation	 List</a>
+					</div></li>
+				
+				<%-- <li class="nav-item dropdown" style="padding-left: 5px;"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> <font style="color: white;">Patient</font>
 				</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="<%=ORSView.PATIENT_CTL%>"><i
-							class="fa fa-user-circle"></i> Add Patient </a> <a class="dropdown-item"
-							href="<%=ORSView.PATIENT_LIST_CTL%>"><i
+							class="fa fa-user-circle"></i> Add Patient </a> <a
+							class="dropdown-item" href="<%=ORSView.PATIENT_LIST_CTL%>"><i
 							class="fa fa-user-friends"></i>Patient List</a>
 					</div></li>
-
-			<%-- 	<li class="nav-item dropdown" style="padding-left: 5px"><a
+ --%>
+				<%-- 	<li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> <font style="color: white;">Product

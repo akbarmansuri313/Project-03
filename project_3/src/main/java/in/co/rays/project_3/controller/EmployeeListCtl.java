@@ -20,8 +20,8 @@ import in.co.rays.project_3.util.PropertyReader;
 import in.co.rays.project_3.util.ServletUtility;
 
 /**
- * EmployeeListCtl handles Employee List operations like
- * Search, Pagination, Delete and Navigation
+ * EmployeeListCtl handles Employee List operations like Search, Pagination,
+ * Delete and Navigation
  * 
  * @author Akbar Mansuri
  * @version 1.0
@@ -111,7 +111,9 @@ public class EmployeeListCtl extends BaseCtl {
 			ServletUtility.forward(getView(), request, response);
 
 		} catch (ApplicationException e) {
-			ServletUtility.handleException(e, request, response);
+
+			ServletUtility.setErrorMessage(e.getMessage(), request);
+			ServletUtility.forward(getView(), request, response);
 			return;
 		}
 
@@ -134,9 +136,7 @@ public class EmployeeListCtl extends BaseCtl {
 		int pageSize = DataUtility.getInt(request.getParameter("pageSize"));
 
 		pageNo = (pageNo == 0) ? 1 : pageNo;
-		pageSize = (pageSize == 0)
-				? DataUtility.getInt(PropertyReader.getValue("page.size"))
-				: pageSize;
+		pageSize = (pageSize == 0) ? DataUtility.getInt(PropertyReader.getValue("page.size")) : pageSize;
 
 		EmployeeDTO dto = (EmployeeDTO) populateDTO(request);
 
@@ -176,11 +176,9 @@ public class EmployeeListCtl extends BaseCtl {
 						deleteDto.setId(DataUtility.getLong(id));
 						model.delete(deleteDto);
 					}
-					ServletUtility.setSuccessMessage(
-							"Employee Deleted Successfully", request);
+					ServletUtility.setSuccessMessage("Employee Deleted Successfully", request);
 				} else {
-					ServletUtility.setErrorMessage(
-							"Select at least one record", request);
+					ServletUtility.setErrorMessage("Select at least one record", request);
 				}
 			}
 
