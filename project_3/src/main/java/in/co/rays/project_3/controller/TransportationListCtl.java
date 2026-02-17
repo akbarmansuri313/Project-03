@@ -28,8 +28,8 @@ public class TransportationListCtl extends BaseCtl {
 
 		TransportationDTO dto = new TransportationDTO();
 
-		dto.setDescription(DataUtility.getString(request.getParameter("description")));
-		dto.setMode(DataUtility.getString(request.getParameter("mode")));
+		dto.setDescription(DataUtility.getString(request.getParameter("Description")));
+		dto.setMode(DataUtility.getString(request.getParameter("Mode")));
 		dto.setCost(DataUtility.getString(request.getParameter("cost")));
 		dto.setOrderDate(DataUtility.getDate(request.getParameter("orderDate")));
 

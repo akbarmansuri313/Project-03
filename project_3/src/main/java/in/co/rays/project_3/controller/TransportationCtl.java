@@ -1,6 +1,7 @@
 package in.co.rays.project_3.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.fasterxml.jackson.annotation.JacksonInject.Value;
+import com.google.inject.Key;
+
 import in.co.rays.project_3.dto.BaseDTO;
 import in.co.rays.project_3.dto.TransportationDTO;
 import in.co.rays.project_3.exception.ApplicationException;
 import in.co.rays.project_3.model.ModelFactory;
+import in.co.rays.project_3.model.TransportationModelHibImpl;
 import in.co.rays.project_3.model.TransportationModelHibInt;
 import in.co.rays.project_3.util.DataUtility;
 import in.co.rays.project_3.util.DataValidator;
@@ -23,6 +28,8 @@ import in.co.rays.project_3.util.ServletUtility;
 public class TransportationCtl extends BaseCtl {
 
 	private static Logger log = Logger.getLogger(TransportationCtl.class);
+
+
 
 	@Override
 	protected boolean validate(HttpServletRequest request) {
@@ -61,7 +68,9 @@ public class TransportationCtl extends BaseCtl {
 		TransportationDTO dto = new TransportationDTO();
 
 		dto.setId(DataUtility.getLong(request.getParameter("id")));
-		dto.setDescription(DataUtility.getString(request.getParameter("description")));
+		dto.setDescription(DataUtility.getString(request.getParameter("Description")));
+		
+		System.out.println("Descitpo" + dto.getDescription());
 		dto.setMode(DataUtility.getString(request.getParameter("mode")));
 		dto.setOrderDate(DataUtility.getDate(request.getParameter("orderDate")));
 		dto.setCost(DataUtility.getString(request.getParameter("cost")));

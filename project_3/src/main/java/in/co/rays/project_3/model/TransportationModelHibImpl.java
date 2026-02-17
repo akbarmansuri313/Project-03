@@ -119,24 +119,20 @@ public class TransportationModelHibImpl implements TransportationModelHibInt {
 			session = HibDataSource.getSession();
 			Criteria criteria = session.createCriteria(TransportationDTO.class);
 
+			System.out.println("sgsgsggsgg");
 			if (dto != null) {
 
-
+System.out.println(dto);
 				if (dto.getDescription() != null && dto.getDescription().length() > 0) {
-					criteria.add(Restrictions.like("description", dto.getDescription() + "%"));
+					criteria.add(Restrictions.like("Description",  dto.getDescription() + "%"));
+					System.out.println(dto.getDescription());
 				}
 
 				if (dto.getMode() != null && dto.getMode().length() > 0) {
-					criteria.add(Restrictions.like("mode", dto.getMode() + "%"));
+					criteria.add(Restrictions.like("Mode", dto.getMode() + "%"));
 				}
 
-				if (dto.getOrderDate() != null) {
-					criteria.add(Restrictions.eq("orderDate", dto.getOrderDate()));
-				}
-
-				if (dto.getCost() != null && dto.getCost().length() > 0) {
-					criteria.add(Restrictions.like("cost", dto.getCost() + "%"));
-				}
+				
 			}
 
 			if (pageSize > 0) {

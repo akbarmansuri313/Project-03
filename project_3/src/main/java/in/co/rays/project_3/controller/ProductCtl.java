@@ -125,8 +125,9 @@ public class ProductCtl extends BaseCtl {
 
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				log.error(e);
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.setErrorMessage(e.getMessage(), request);
+
+				ServletUtility.forward(getView(), request, response);
 				return;
 			} catch (DuplicateRecordException e) {
 				ServletUtility.setDto(dto, request);
