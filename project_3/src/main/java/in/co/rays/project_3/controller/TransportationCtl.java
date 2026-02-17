@@ -29,7 +29,20 @@ public class TransportationCtl extends BaseCtl {
 
 	private static Logger log = Logger.getLogger(TransportationCtl.class);
 
-
+@Override
+protected void preload(HttpServletRequest request) {
+	
+	
+	HashMap map = new HashMap();
+	
+	map.put("Bus", "Bus");
+	map.put("Train", "Train");
+	map.put("Flight", "Flight");
+	map.put("Bike", "Bike");
+	map.put("Truck", "Truck");
+	
+	request.setAttribute("map", map);
+}
 
 	@Override
 	protected boolean validate(HttpServletRequest request) {
@@ -42,7 +55,7 @@ public class TransportationCtl extends BaseCtl {
 		}
 
 		if (DataValidator.isNull(request.getParameter("mode"))) {
-			request.setAttribute("mode", PropertyReader.getValue("error.require", "Mode"));
+			request.setAttribute("Mode", PropertyReader.getValue("error.require", "Mode"));
 			pass = false;
 		}
 
@@ -55,7 +68,7 @@ public class TransportationCtl extends BaseCtl {
 		}
 
 		if (DataValidator.isNull(request.getParameter("cost"))) {
-			request.setAttribute("cost", PropertyReader.getValue("error.require", "Cost"));
+			request.setAttribute("Cost", PropertyReader.getValue("error.require", "Cost"));
 			pass = false;
 		}
 
@@ -70,10 +83,10 @@ public class TransportationCtl extends BaseCtl {
 		dto.setId(DataUtility.getLong(request.getParameter("id")));
 		dto.setDescription(DataUtility.getString(request.getParameter("Description")));
 		
-		System.out.println("Descitpo" + dto.getDescription());
-		dto.setMode(DataUtility.getString(request.getParameter("mode")));
+	
+		dto.setMode(DataUtility.getString(request.getParameter("Mode")));
 		dto.setOrderDate(DataUtility.getDate(request.getParameter("orderDate")));
-		dto.setCost(DataUtility.getString(request.getParameter("cost")));
+		dto.setCost(DataUtility.getString(request.getParameter("Cost")));
 
 		populateBean(dto, request);
 
