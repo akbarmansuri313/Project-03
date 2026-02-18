@@ -1,6 +1,7 @@
 package in.co.rays.project_3.util;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -62,6 +63,17 @@ public class ServletUtility {
         request.setAttribute("exception", e);
         response.sendRedirect(ORSView.ERROR_CTL);
 
+    }
+    
+    public static void handleListDBDown(String page, BaseDTO dto, int pageNo, int pageSize, HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        setErrorMessage("Database server down... Try After Some Time....!!!", request);
+        setList(new ArrayList<>(), request);
+        setDto(dto, request);
+        request.setAttribute("pageNo", pageNo);
+		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("nextListSize", 0);
+        forward(page, request, response);
     }
 
     /**

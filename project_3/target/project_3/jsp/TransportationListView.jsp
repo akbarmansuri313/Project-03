@@ -80,11 +80,10 @@
 			if (!ServletUtility.getErrorMessage(request).equals("")) {
 		%>
 		<center>
-			<div class="col-md-4 alert alert-danger text-center">
+				<div class="col-md-4 alert alert-danger text-center">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
 				<h4>
-					<font color="red"> <%=ServletUtility.getErrorMessage(request)%>
-					</font>
+					<font color="red"> <%=ServletUtility.getErrorMessage(request)%></font>
 				</h4>
 			</div>
 		</center>
@@ -95,10 +94,16 @@
 		<!-- SEARCH BAR -->
 		<div class="row mb-3">
 			<div class="col-sm-3"></div>
-
+			
+			
 			<div class="col-sm-3">
-				<input type="text" name="description"
-					placeholder="Enter Description" class="form-control">
+				<input type="text" name="Description" placeholder="Enter Description"
+					class="form-control">
+			</div>
+			&nbsp;
+			<div>
+				<input type="text" name="Mode" placeholder="Enter Mode"
+					class="form-control">
 			</div>
 
 			<div class="col-sm-3">

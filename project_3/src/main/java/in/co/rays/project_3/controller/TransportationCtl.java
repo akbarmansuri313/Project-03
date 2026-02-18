@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.fasterxml.jackson.annotation.JacksonInject.Value;
-import com.google.inject.Key;
-
 import in.co.rays.project_3.dto.BaseDTO;
 import in.co.rays.project_3.dto.TransportationDTO;
 import in.co.rays.project_3.exception.ApplicationException;
@@ -81,12 +78,12 @@ protected void preload(HttpServletRequest request) {
 		TransportationDTO dto = new TransportationDTO();
 
 		dto.setId(DataUtility.getLong(request.getParameter("id")));
-		dto.setDescription(DataUtility.getString(request.getParameter("Description")));
+		dto.setDescription(DataUtility.getString(request.getParameter("description")));
 		
 	
-		dto.setMode(DataUtility.getString(request.getParameter("Mode")));
+		dto.setMode(DataUtility.getString(request.getParameter("mode")));
 		dto.setOrderDate(DataUtility.getDate(request.getParameter("orderDate")));
-		dto.setCost(DataUtility.getString(request.getParameter("Cost")));
+		dto.setCost(DataUtility.getString(request.getParameter("cost")));
 
 		populateBean(dto, request);
 
@@ -130,6 +127,8 @@ protected void preload(HttpServletRequest request) {
 		String op = DataUtility.getString(request.getParameter("operation"));
 		TransportationModelHibInt model = ModelFactory.getInstance().getTransportationModel();
 		long id = DataUtility.getLong(request.getParameter("id"));
+		
+		System.out.println("operation" + op);
 
 		if (OP_SAVE.equalsIgnoreCase(op) || OP_UPDATE.equalsIgnoreCase(op)) {
 
@@ -148,9 +147,11 @@ protected void preload(HttpServletRequest request) {
 
 			} catch (ApplicationException e) {
 				log.error(e);
+				ServletUtility.setDto(dto, request);
 				ServletUtility.setErrorMessage(e.getMessage(), request);
 
 				ServletUtility.forward(getView(), request, response);
+			
 				return;
 			}
 

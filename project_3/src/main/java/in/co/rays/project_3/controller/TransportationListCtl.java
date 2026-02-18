@@ -61,7 +61,7 @@ public class TransportationListCtl extends BaseCtl {
 			list = model.search(dto, pageNo, pageSize);
 			next = model.search(dto, pageNo + 1, pageSize);
 
-			if (list == null || list.size() == 0) {
+			if (list == null && list.size() == 0) {
 				ServletUtility.setErrorMessage("No record found ", request);
 			}
 
@@ -77,7 +77,10 @@ public class TransportationListCtl extends BaseCtl {
 			ServletUtility.forward(getView(), request, response);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			
+			ServletUtility.handleListDBDown(getView(), dto, pageNo, pageSize, request, response);
+			
+			return;
 		}
 
 		log.debug("TransportationListCtl doGet End");

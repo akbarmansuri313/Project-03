@@ -150,6 +150,8 @@ public class PatientCtl extends BaseCtl {
 				ServletUtility.setDto(dto, request);
 				ServletUtility.setSuccessMessage("Patient Successfully saved", request);
 				
+				return;
+				
 			} catch (ApplicationException e) {
 				
 				ServletUtility.setErrorMessage(e.getMessage(), request);

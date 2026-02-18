@@ -73,6 +73,11 @@ i.css {
 							<%
 								}
 							%>
+							
+							<%
+							HashMap map = (HashMap) request.getAttribute("map");
+							
+							%>
 
 							<!-- Success Message -->
 							<h4 align="center">
@@ -94,9 +99,9 @@ i.css {
 									if (!ServletUtility.getErrorMessage(request).equals("")) {
 								%>
 								<div class="alert alert-danger alert-dismissible">
-									<button type="button" class="close" data-dismiss="alert">&times;</button>
-									<%=ServletUtility.getErrorMessage(request)%>
-								</div>
+										<button type="button" class="close" data-dismiss="alert">&times;</button>
+										<%=ServletUtility.getErrorMessage(request)%>
+									</div>
 								<%
 									}
 								%>
@@ -138,9 +143,7 @@ i.css {
 											<i class="fa fa-bus grey-text"></i>
 										</div>
 									</div>
-									<input type="text" class="form-control" name="mode"
-										placeholder="Enter Mode (Bus/Train/Flight)"
-										value="<%=DataUtility.getStringData(dto.getMode())%>">
+									<%=HTMLUtility.getList("mode", dto.getMode(), map)%>
 								</div>
 							</div>
 							<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("mode", request)%>
@@ -178,7 +181,7 @@ i.css {
 										value="<%=DataUtility.getStringData(dto.getCost())%>">
 								</div>
 							</div>
-							<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("cost", request)%>
+							<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("Cost", request)%>
 							</font><br>
 
 							<!-- Buttons -->

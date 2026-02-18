@@ -99,9 +99,9 @@ i.css {
 									if (!ServletUtility.getErrorMessage(request).equals("")) {
 								%>
 								<div class="alert alert-danger alert-dismissible">
-									<button type="button" class="close" data-dismiss="alert">&times;</button>
-									<%=ServletUtility.getErrorMessage(request)%>
-								</div>
+										<button type="button" class="close" data-dismiss="alert">&times;</button>
+										<%=ServletUtility.getErrorMessage(request)%>
+									</div>
 								<%
 									}
 								%>
@@ -143,7 +143,7 @@ i.css {
 											<i class="fa fa-bus grey-text"></i>
 										</div>
 									</div>
-									<%=HTMLUtility.getList("Mode", dto.getMode(), map)%>
+									<%=HTMLUtility.getList("mode", dto.getMode(), map)%>
 								</div>
 							</div>
 							<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("mode", request)%>
