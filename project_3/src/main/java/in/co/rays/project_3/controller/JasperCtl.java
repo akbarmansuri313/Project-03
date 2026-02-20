@@ -48,12 +48,13 @@ public class JasperCtl extends BaseCtl {
 
 			String jasperFile = System.getenv("jasperctl");
 
-			System.out.println("jasperctl path before =" + jasperFile);
 			if (jasperFile == null) {
 				jasperFile = getServletContext().getRealPath("/jasper/Projcet03.jrxml");
 			}
+			
 //			InputStream jrxmlStream = getClass().getClassLoader().getResourceAsStream("report/Projcet03.jrxml");
 
+			
 			JasperReport jasperReport = JasperCompileManager.compileReport(jasperFile);
 //
 //			/* Compilation of jrxml file */

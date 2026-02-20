@@ -46,10 +46,14 @@
 			int pageSize = ServletUtility.getPageSize(request);
 			int index = ((pageNo - 1) * pageSize) + 1;
 
-			int nextPageSize = DataUtility.getInt(request.getAttribute("nextListSize").toString());
-			List list = ServletUtility.getList(request);
+			int nextPageSize = 0;
+			if (request.getAttribute("nextListSize") != null) {
+				nextPageSize = DataUtility.getInt(request.getAttribute("nextListSize").toString());
+			}
 
-			if (list != null && list.size() > 0) {
+			List list = ServletUtility.getList(request);
+			String errorMsg = ServletUtility.getErrorMessage(request);
+			String successMsg = ServletUtility.getSuccessMessage(request);
 		%>
 
 		<center>
@@ -60,14 +64,13 @@
 
 		<!-- SUCCESS MESSAGE -->
 		<%
-			if (!ServletUtility.getSuccessMessage(request).equals("")) {
+			if (successMsg != null && successMsg.trim().length() > 0) {
 		%>
 		<center>
 			<div class="col-md-4 alert alert-success text-center">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
 				<h4>
-					<font color="green"> <%=ServletUtility.getSuccessMessage(request)%>
-					</font>
+					<font color="green"><%=successMsg%></font>
 				</h4>
 			</div>
 		</center>
@@ -75,47 +78,28 @@
 			}
 		%>
 
-		<!-- ERROR MESSAGE -->
+		<!-- ERROR MESSAGE (Database Down or any other error) -->
 		<%
-			if (!ServletUtility.getErrorMessage(request).equals("")) {
+			if (errorMsg != null && errorMsg.trim().length() > 0) {
 		%>
 		<center>
-				<div class="col-md-4 alert alert-danger text-center">
+			<div class="col-md-4 alert alert-danger text-center">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
 				<h4>
-					<font color="red"> <%=ServletUtility.getErrorMessage(request)%></font>
+					<font color="red"><%=errorMsg%></font>
 				</h4>
 			</div>
 		</center>
 		<%
-			}
+			} else if (list == null || list.size() == 0) {
+		%>
+		<center>
+			<h2>No Transportation Found</h2>
+		</center>
+		<%
+			} else {
 		%>
 
-		<!-- SEARCH BAR -->
-		<div class="row mb-3">
-			<div class="col-sm-3"></div>
-			
-			
-			<div class="col-sm-3">
-				<input type="text" name="Description" placeholder="Enter Description"
-					class="form-control">
-			</div>
-			&nbsp;
-			<div>
-				<input type="text" name="Mode" placeholder="Enter Mode"
-					class="form-control">
-			</div>
-
-			<div class="col-sm-3">
-				<input type="submit" name="operation"
-					value="<%=TransportationListCtl.OP_SEARCH%>"
-					class="btn btn-primary"> <input type="submit"
-					name="operation" value="<%=TransportationListCtl.OP_RESET%>"
-					class="btn btn-dark">
-			</div>
-		</div>
-
-		<!-- TABLE -->
 		<div class="table-responsive">
 			<table class="table table-dark table-bordered table-hover">
 
@@ -155,14 +139,12 @@
 						}
 					%>
 				</tbody>
-
 			</table>
 		</div>
 
-		<!-- PAGINATION BUTTONS -->
+		<!-- PAGINATION -->
 		<table width="100%">
 			<tr>
-
 				<td><input type="submit" name="operation"
 					value="<%=TransportationListCtl.OP_PREVIOUS%>"
 					class="btn btn-warning" <%=pageNo == 1 ? "disabled" : ""%>>
@@ -179,20 +161,11 @@
 				<td align="right"><input type="submit" name="operation"
 					value="<%=TransportationListCtl.OP_NEXT%>" class="btn btn-warning"
 					<%=nextPageSize != 0 ? "" : "disabled"%>></td>
-
 			</tr>
 		</table>
 
 		<%
-			} else {
-		%>
-
-		<center>
-			<h2>No Transportation Found</h2>
-		</center>
-
-		<%
-			}
+			} // end else for list not empty
 		%>
 
 		<input type="hidden" name="pageNo" value="<%=pageNo%>"> <input

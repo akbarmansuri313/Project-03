@@ -248,6 +248,18 @@
 							class="dropdown-item" href="<%=ORSView.PATIENT_LIST_CTL%>"><i
 							class="fa fa-user-friends"></i>Patient List</a>
 					</div></li> 
+					
+					 <li class="nav-item dropdown" style="padding-left: 5px;"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Inventory</font>
+				</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<%=ORSView.INVENTORY_CTL%>"><i
+							class="fa fa-user-circle"></i> Add Inventory </a> <a
+							class="dropdown-item" href="<%=ORSView.INVENTORY_LIST_CTL%>"><i
+							class="fa fa-user-friends"></i>Inventory List</a>
+					</div></li> 
 
 				<%-- 	<li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"

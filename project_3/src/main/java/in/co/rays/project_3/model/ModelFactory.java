@@ -27,6 +27,23 @@ public final class ModelFactory {
 		return mFactory;
 	}
 	
+	public InventoryModelHibInt getInventoryModel() {
+
+		InventoryModelHibInt inventoryModel = (InventoryModelHibInt) modelCache.get("inventoryModel");
+		if (inventoryModel == null) {
+			if ("Hibernate".equals(DATABASE)) {
+				inventoryModel = new InventoryModelHibImpl();
+			}
+			if ("JDBC".equals(DATABASE)) {
+				inventoryModel = new InventoryModelJDBCImpl();
+			}
+			modelCache.put("inventoryModel", inventoryModel);
+		}
+
+		return inventoryModel;
+	}
+
+	
 	public TransportationModelHibInt getTransportationModel() {
 
 		TransportationModelHibInt transportationModel = (TransportationModelHibInt) modelCache.get("transportationModel");
