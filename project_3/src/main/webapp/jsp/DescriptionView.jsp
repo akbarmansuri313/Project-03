@@ -132,7 +132,7 @@
 						<br>
 
 						<!-- Buttons -->
-						<div class="text-csenter">
+						<div class="text-center">
 							<%
 								if (id > 0) {
 							%>

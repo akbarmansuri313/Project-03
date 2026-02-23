@@ -50,19 +50,23 @@
 				int pageNo = ServletUtility.getPageNo(request);
 				int pageSize = ServletUtility.getPageSize(request);
 				int index = ((pageNo - 1) * pageSize) + 1;
-				int nextPageSize = DataUtility.getInt(request.getAttribute("nextListSize").toString());
+
+				int nextPageSize = 0;
+				if (request.getAttribute("nextListSize") != null) {
+					nextPageSize = DataUtility.getInt(request.getAttribute("nextListSize").toString());
+				}
 
 				List list = ServletUtility.getList(request);
-				Iterator<DescriptionDTO> it = list.iterator();
-			%>
+				if (list == null) {
+					list = new java.util.ArrayList();
+				}
 
-			<%
-				if (list.size() != 0) {
+				Iterator<DescriptionDTO> it = list.iterator();
 			%>
 
 			<center>
 				<h1 class="text-dark font-weight-bold pt-3">
-					<u>Department List</u>
+					<u>Description List</u>
 				</h1>
 			</center>
 
@@ -105,9 +109,12 @@
 				<div class="col-md-4"></div>
 			</div>
 
+			<%
+				if (list.size() != 0) {
+			%>
+
 			<!-- Search Panel -->
 			<div class="row">
-
 				<div class="col-sm-3"></div>
 
 				<div class="col-sm-2">
@@ -122,7 +129,6 @@
 						value="<%=ServletUtility.getParameter("departmentHead", request)%>">
 				</div>
 
-
 				<div class="col-sm-3">
 					<input type="submit" class="btn btn-primary btn-md"
 						name="operation" value="<%=DescriptionListCtl.OP_SEARCH%>">
@@ -130,6 +136,7 @@
 						value="<%=DescriptionListCtl.OP_RESET%>">
 				</div>
 
+				<div class="col-sm-2"></div>
 			</div>
 
 			<br>
@@ -200,10 +207,7 @@
 				} else {
 			%>
 
-			<center>
-				<h1 style="font-size: 40px; color: #162390;">Department List</h1>
-			</center>
-
+		
 			<br>
 
 			<div style="padding-left: 48%;">
@@ -222,7 +226,5 @@
 	</div>
 
 </body>
-
 <%@include file="FooterView.jsp"%>
-
 </html>
