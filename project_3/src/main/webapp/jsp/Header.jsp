@@ -249,6 +249,19 @@
 							class="fa fa-user-friends"></i>Patient List</a>
 					</div></li> 
 					
+					
+				 <li class="nav-item dropdown" style="padding-left: 5px;"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Description</font>
+				</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<%=ORSView.DESCRITPION_CTL%>"><i
+							class="fa fa-user-circle"></i> Add Description </a> <a
+							class="dropdown-item" href="<%=ORSView.DESCRIPTION_LIST_CTL%>"><i
+							class="fa fa-user-friends"></i>Description List</a>
+					</div></li> 
+					
 					 <li class="nav-item dropdown" style="padding-left: 5px;"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"

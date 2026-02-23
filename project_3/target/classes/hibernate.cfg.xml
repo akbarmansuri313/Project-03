@@ -54,6 +54,9 @@
 			
 			<mapping
 			resource="in/co/rays/project_3/hbm/InventoryDTO.hbm.xml" />
+			
+			<mapping
+			resource="in/co/rays/project_3/hbm/DescriptionDTO.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>
