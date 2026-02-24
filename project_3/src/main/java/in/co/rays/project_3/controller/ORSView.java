@@ -148,6 +148,12 @@ public interface ORSView {
 	public String TRANSPORTATION_LIST_CTL = APP_CONTEXT + "/ctl/TransportationListCtl";
 	public String TRANSPORTATION_LIST_VIEW = PAGE_FOLDER + "/TransportationListView.jsp";
 	
+	public String CANDIDATE_CTL = APP_CONTEXT + "/ctl/CandidateCtl";
+	public String CANDIDATE_VIEW = PAGE_FOLDER + "/CandidateView.jsp";
+	
+	public String CANDIDATE_LIST_CTL = APP_CONTEXT + "/ctl/CandidateListCtl";
+	public String CANDIDATE_LIST_VIEW = PAGE_FOLDER + "/CandidateListView.jsp";
+	
 	public String INVENTORY_CTL = APP_CONTEXT + "/ctl/InventoryCtl";
 	public String INVENTORY_VIEW = PAGE_FOLDER + "/InventoryView.jsp";
 	
@@ -159,5 +165,6 @@ public interface ORSView {
 	
 	public String DESCRIPTION_LIST_CTL = APP_CONTEXT + "/ctl/DescriptionListCtl";
 	public String DESCRIPTION_LIST_VIEW = PAGE_FOLDER + "/DescriptionListView.jsp";
+	
 
 }

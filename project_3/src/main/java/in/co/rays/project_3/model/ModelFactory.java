@@ -27,6 +27,22 @@ public final class ModelFactory {
 		return mFactory;
 	}
 	
+	public CandidateModelInt getCandidateModel(){
+
+		CandidateModelInt candidateModel = (CandidateModelInt) modelCache.get("candidateModel");
+		if (candidateModel == null) {
+			if ("Hibernate".equals(DATABASE)) {
+				candidateModel = new CandidateModelHibImpl();
+			}
+			if ("JDBC".equals(DATABASE)) {
+				candidateModel = new CandidateModelJDBCImpl();
+			}
+			modelCache.put("candidateModel", candidateModel);
+		}
+		return candidateModel;
+	}
+	
+	
 	public DescriptionModelInt getDescriptionModel() {
 
 		DescriptionModelInt descriptionModel = (DescriptionModelInt) modelCache.get("descriptionModel");

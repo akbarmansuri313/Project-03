@@ -32,9 +32,9 @@
 			resource="in/co/rays/project_3/hbm/StudentDTO.hbm.xml" />
 		<mapping
 			resource="in/co/rays/project_3/hbm/CollegeDTO.hbm.xml" />
-			
+
 		<mapping resource="in/co/rays/project_3/hbm/CourseDTO.hbm.xml" />
-		
+
 		<mapping resource="in/co/rays/project_3/hbm/RoleDTO.hbm.xml" />
 		<mapping
 			resource="in/co/rays/project_3/hbm/MarksheetDTO.hbm.xml" />
@@ -47,10 +47,20 @@
 		<mapping
 			resource="in/co/rays/project_3/hbm/ProductDTO.hbm.xml" />
 
-		<mapping resource="in/co/rays/project_3/hbm/EmployeeDTO.hbm.xml"/>
-		
+		<mapping
+			resource="in/co/rays/project_3/hbm/EmployeeDTO.hbm.xml" />
+
 		<mapping
 			resource="in/co/rays/project_3/hbm/TransportationDTO.hbm.xml" />
+
+		<mapping
+			resource="in/co/rays/project_3/hbm/InventoryDTO.hbm.xml" />
+
+		<mapping
+			resource="in/co/rays/project_3/hbm/DescriptionDTO.hbm.xml" />
+
+		<mapping
+			resource="in/co/rays/project_3/hbm/CandidateDTO.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>

@@ -14,7 +14,6 @@ import in.co.rays.project_3.dto.BaseDTO;
 import in.co.rays.project_3.dto.TransportationDTO;
 import in.co.rays.project_3.exception.ApplicationException;
 import in.co.rays.project_3.model.ModelFactory;
-import in.co.rays.project_3.model.TransportationModelHibImpl;
 import in.co.rays.project_3.model.TransportationModelHibInt;
 import in.co.rays.project_3.util.DataUtility;
 import in.co.rays.project_3.util.DataValidator;
@@ -26,23 +25,26 @@ public class TransportationCtl extends BaseCtl {
 
 	private static Logger log = Logger.getLogger(TransportationCtl.class);
 
-@Override
-protected void preload(HttpServletRequest request) {
-	
-	
-	HashMap map = new HashMap();
-	
-	map.put("Bus", "Bus");
-	map.put("Train", "Train");
-	map.put("Flight", "Flight");
-	map.put("Bike", "Bike");
-	map.put("Truck", "Truck");
-	
-	request.setAttribute("map", map);
-}
+	/**
+	 * Preload Mode List
+	 */
+	@Override
+	protected void preload(HttpServletRequest request) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("Bus", "Bus");
+		map.put("Train", "Train");
+		map.put("Flight", "Flight");
+		map.put("Bike", "Bike");
+		map.put("Truck", "Truck");
+		request.setAttribute("map", map);
+	}
 
+	/**
+	 * Validate Transportation Fields
+	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
+		log.debug("TransportationCtl validate started");
 
 		boolean pass = true;
 
@@ -52,7 +54,7 @@ protected void preload(HttpServletRequest request) {
 		}
 
 		if (DataValidator.isNull(request.getParameter("mode"))) {
-			request.setAttribute("Mode", PropertyReader.getValue("error.require", "Mode"));
+			request.setAttribute("mode", PropertyReader.getValue("error.require", "Mode"));
 			pass = false;
 		}
 
@@ -65,118 +67,101 @@ protected void preload(HttpServletRequest request) {
 		}
 
 		if (DataValidator.isNull(request.getParameter("cost"))) {
-			request.setAttribute("Cost", PropertyReader.getValue("error.require", "Cost"));
+			request.setAttribute("cost", PropertyReader.getValue("error.require", "Cost"));
 			pass = false;
 		}
 
+		log.debug("TransportationCtl validate ended with result: " + pass);
 		return pass;
 	}
 
+	/**
+	 * Populate DTO
+	 */
 	@Override
 	protected BaseDTO populateDTO(HttpServletRequest request) {
+		log.debug("TransportationCtl populateDTO started");
 
 		TransportationDTO dto = new TransportationDTO();
-
 		dto.setId(DataUtility.getLong(request.getParameter("id")));
 		dto.setDescription(DataUtility.getString(request.getParameter("description")));
-		
-	
 		dto.setMode(DataUtility.getString(request.getParameter("mode")));
 		dto.setOrderDate(DataUtility.getDate(request.getParameter("orderDate")));
 		dto.setCost(DataUtility.getString(request.getParameter("cost")));
 
 		populateBean(dto, request);
 
+		log.debug("TransportationCtl populateDTO ended");
 		return dto;
 	}
 
+	/**
+	 * Handle GET
+	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
+		log.debug("TransportationCtl doGet started");
 
-		log.debug("TransportationCtl doGet Start");
-
-		String op = DataUtility.getString(request.getParameter("operation"));
-		TransportationModelHibInt model = ModelFactory.getInstance().getTransportationModel();
 		long id = DataUtility.getLong(request.getParameter("id"));
+		TransportationModelHibInt model = ModelFactory.getInstance().getTransportationModel();
 
-		if (id > 0 || op != null) {
-
-			TransportationDTO dto;
+		if (id > 0) {
 			try {
-				dto = model.findByPK(id);
+				TransportationDTO dto = model.findByPK(id);
 				ServletUtility.setDto(dto, request);
-
 			} catch (ApplicationException e) {
-				ServletUtility.setErrorMessage(e.getMessage(), request);
-
-				ServletUtility.forward(getView(), request, response);
+				ServletUtility.handleException(e, request, response);
 				return;
 			}
 		}
 
 		ServletUtility.forward(getView(), request, response);
+		log.debug("TransportationCtl doGet ended");
 	}
 
+	/**
+	 * Handle POST
+	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
+		log.debug("TransportationCtl doPost started");
 
-		log.debug("TransportationCtl doPost Start");
-
-		String op = DataUtility.getString(request.getParameter("operation"));
-		TransportationModelHibInt model = ModelFactory.getInstance().getTransportationModel();
+		String op = request.getParameter("operation");
 		long id = DataUtility.getLong(request.getParameter("id"));
-		
-		System.out.println("operation" + op);
+		TransportationModelHibInt model = ModelFactory.getInstance().getTransportationModel();
 
 		if (OP_SAVE.equalsIgnoreCase(op) || OP_UPDATE.equalsIgnoreCase(op)) {
-
 			TransportationDTO dto = (TransportationDTO) populateDTO(request);
 
 			try {
 				if (id > 0) {
+					dto.setId(id);
 					model.update(dto);
-					ServletUtility.setSuccessMessage("Data is successfully Updated", request);
+					ServletUtility.setSuccessMessage("Transportation Updated Successfully", request);
 				} else {
 					model.add(dto);
-					ServletUtility.setSuccessMessage("Data is successfully saved", request);
+					ServletUtility.setSuccessMessage("Transportation Added Successfully", request);
 				}
-
 				ServletUtility.setDto(dto, request);
 
 			} catch (ApplicationException e) {
-				log.error(e);
-				ServletUtility.setDto(dto, request);
 				ServletUtility.setErrorMessage(e.getMessage(), request);
-
+				ServletUtility.setDto(dto, request);
 				ServletUtility.forward(getView(), request, response);
-			
 				return;
 			}
-
-		} else if (OP_DELETE.equalsIgnoreCase(op)) {
-
-			TransportationDTO dto = (TransportationDTO) populateDTO(request);
-
-			model.delete(dto);
-			ServletUtility.redirect(ORSView.TRANSPORTATION_LIST_CTL, request, response);
-			return;
-
-		} else if (OP_CANCEL.equalsIgnoreCase(op)) {
-
-			ServletUtility.redirect(ORSView.TRANSPORTATION_LIST_CTL, request, response);
-			return;
-
 		} else if (OP_RESET.equalsIgnoreCase(op)) {
-
 			ServletUtility.redirect(ORSView.TRANSPORTATION_CTL, request, response);
+			return;
+		} else if (OP_CANCEL.equalsIgnoreCase(op)) {
+			ServletUtility.redirect(ORSView.TRANSPORTATION_LIST_CTL, request, response);
 			return;
 		}
 
 		ServletUtility.forward(getView(), request, response);
-
-		log.debug("TransportationCtl doPost End");
+		log.debug("TransportationCtl doPost ended");
 	}
 
 	@Override
